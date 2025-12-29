@@ -362,6 +362,7 @@ task lint                # Check code style
 ```
 
 **Characteristics:**
+
 - Fast compile time (incremental)
 - Full debug symbols
 - Debug assertions enabled
@@ -374,11 +375,12 @@ task ci                  # Full CI pipeline
 ```
 
 **Pipeline:**
+
 1. **Lint**: Code style and safety checks
-2. **Build**: With optimizations (release profile)
-3. **Test**: Full test suite (95% core, 80% bindings)
-4. **Bench**: Performance regression detection
-5. **Coverage**: Upload to coverage service
+1. **Build**: With optimizations (release profile)
+1. **Test**: Full test suite (95% core, 80% bindings)
+1. **Bench**: Performance regression detection
+1. **Coverage**: Upload to coverage service
 
 **Configuration:**
 
@@ -412,11 +414,12 @@ task release             # Full release process
 ```
 
 **Steps:**
+
 1. **Version Bump**: Update Cargo.toml versions
-2. **Changelog**: Generate from git log
-3. **Build**: Release-optimized builds
-4. **Tag**: Create git tag
-5. **Publish**: To all registries simultaneously
+1. **Changelog**: Generate from git log
+1. **Build**: Release-optimized builds
+1. **Tag**: Create git tag
+1. **Publish**: To all registries simultaneously
 
 **Registry Publishing:**
 

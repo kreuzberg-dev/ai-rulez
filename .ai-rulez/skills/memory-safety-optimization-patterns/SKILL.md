@@ -1,6 +1,6 @@
----
-priority: high
----
+______________________________________________________________________
+
+## priority: high
 
 # Memory Safety & Optimization Patterns
 
@@ -24,6 +24,7 @@ priority: high
 - **Scoped borrowing**: Resources released immediately after scope; no lingering references
 
 ### RAII Example
+
 ```rust
 {
     let file = std::fs::File::open("data.txt")?;  // Acquire
@@ -51,6 +52,7 @@ priority: high
 - **String interning**: For repeated string comparisons, intern into static strings
 
 ### String Example
+
 ```rust
 use std::borrow::Cow;
 
@@ -76,6 +78,7 @@ let clone2 = std::sync::Arc::clone(&shared_name);
 - **SmallVec**: Stack-allocated for small data; heap fallback for larger
 
 ### Buffer Reuse Example
+
 ```rust
 struct DataProcessor {
     input_buffer: Vec<u8>,
@@ -113,6 +116,7 @@ impl DataProcessor {
 - **Function lifetimes**: Use `'_` (wildcard) for unused lifetimes in bounds
 
 ### Lifetime Example
+
 ```rust
 // Avoid unnecessary lifetimes
 struct BadParser<'a> {
@@ -133,23 +137,27 @@ fn parse(input: &str) -> &str {  // Output borrows from input
 ## Tools for Safety Verification
 
 - **Valgrind** (Linux): Detect memory leaks, use-after-free
+
   ```bash
   valgrind --leak-check=full --show-leak-kinds=all ./myapp
   valgrind --tool=massif ./myapp  # Heap profiler
   ```
 
 - **AddressSanitizer (ASan)**: Compile-time instrumentation for memory errors
+
   ```bash
   RUSTFLAGS="-Z sanitizer=address" cargo +nightly build --target x86_64-unknown-linux-gnu
   ```
 
 - **cargo-careful**: Run tests under Miri for undefined behavior detection
+
   ```bash
   cargo +nightly careful test
   MIRIFLAGS="-Zmiri-strict-provenance" cargo +nightly miri test
   ```
 
 - **Clippy**: Lint for lifetime issues
+
   ```bash
   cargo clippy --all-targets -- -D warnings
   ```
@@ -168,8 +176,8 @@ fn parse(input: &str) -> &str {  // Output borrows from input
 ## Best Practices Summary
 
 1. **Default to references**: Function params should borrow when possible
-2. **Use Cow for conditional ownership**: Avoid unnecessary clones
-3. **Pre-allocate in hot loops**: Vec::with_capacity, String::with_capacity
-4. **Profile before optimizing**: Use Valgrind/Instruments to find actual leaks
-5. **Test with sanitizers**: AddressSanitizer + Miri catch hidden bugs
-6. **Document lifetimes**: Explain non-obvious lifetime constraints in comments
+1. **Use Cow for conditional ownership**: Avoid unnecessary clones
+1. **Pre-allocate in hot loops**: Vec::with_capacity, String::with_capacity
+1. **Profile before optimizing**: Use Valgrind/Instruments to find actual leaks
+1. **Test with sanitizers**: AddressSanitizer + Miri catch hidden bugs
+1. **Document lifetimes**: Explain non-obvious lifetime constraints in comments

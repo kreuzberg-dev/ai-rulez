@@ -1,9 +1,11 @@
 # Organizational Domain
 
 ## Purpose
+
 The organizational domain establishes governance, architectural principles, and cross-cutting standards for the entire polyglot project. It ensures consistency, clarity, and alignment across language ecosystems, tool choices, and development practices.
 
 ## Scope and Responsibilities
+
 - Define core architectural principles: Rust-first design, language-idiomatic bindings, no logic duplication across languages
 - Establish polyglot multi-language FFI strategy: Rust core is single source of truth; all bindings are thin wrappers
 - Coordinate cross-language design decisions and architectural tradeoffs
@@ -19,9 +21,11 @@ The organizational domain establishes governance, architectural principles, and 
 - Manage documentation language parity enforcement
 
 ## Referenced Agents
+
 - **polyglot-architect**: System design and multi-language architecture decisions. Expertise in FFI design, version syncing, E2E test generation, cross-platform compatibility. Uses Sonnet 4.5 for strategic decisions.
 
 ## Referenced Skills
+
 - **agent-selection-usage-guidelines**: Rules for assigning agents (rust-core-engineer for Rust, language-bindings engineers for language-specific work, etc.)
 - **model-routing**: Sonnet 4.5 for architectural decisions, Haiku 4.5 for implementation and integration issues
 - **git-commit-standards**: Conventional Commits 1.0.0 (feat/fix/docs/refactor/test/chore with scope), NO AI signatures, branch protection with status checks
@@ -32,14 +36,17 @@ The organizational domain establishes governance, architectural principles, and 
 - **common-task-commands**: Standard task commands (task setup, task build, task test, task lint, task format, task cov:all)
 
 ## Referenced Rules
-- **code-quality**: Descriptive variable names, complex logic comments, unit tests, <50 line functions, explicit error handling
+
+- **code-quality**: Descriptive variable names, complex logic comments, unit tests, \<50 line functions, explicit error handling
 
 ## Interaction Points
+
 - **Provides to**: All domains (governance, standards, architectural guidance)
 - **Receives from**: All domains (feedback, architectural evolution, standards updates)
 - **Coordinates with**: All domains for standards compliance and consistency
 
 ## Critical Files This Domain Manages
+
 - `.ai-rulez/agents/` (Agent role definitions and expertise models)
 - `.ai-rulez/skills/` (Domain expertise and capability definitions)
 - `.ai-rulez/rules/` (Project-wide rules and standards)

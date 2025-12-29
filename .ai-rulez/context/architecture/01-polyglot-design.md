@@ -43,24 +43,28 @@ The FFI (Foreign Function Interface) boundary is the critical security perimeter
 ### Unsafe Boundary Rules
 
 1. **All unsafe code is in binding layers or FFI wrappers**
+
    - Core library is 95%+ safe Rust
    - Unsafe blocks require `// SAFETY:` comments (see 07-security-model.md)
    - Each unsafe operation must be justified and documented
 
-2. **Memory Safety Guarantees**
+1. **Memory Safety Guarantees**
+
    - No memory leaks across FFI boundary
    - No use-after-free vulnerabilities
    - No buffer overflows in type conversions
    - Proper cleanup in all error paths
 
-3. **Thread Safety**
+1. **Thread Safety**
+
    - All bindings maintain Send/Sync bounds
-   - Concurrent access is serialized or protected with Arc<Mutex<T>>
+   - Concurrent access is serialized or protected with Arc\<Mutex<T>>
    - Language-specific concurrency models are wrapped appropriately
 
 ### Error Boundary
 
 Errors crossing the FFI boundary must be:
+
 - Serialized in a language-neutral format
 - Deterministic and reproducible
 - Include stack traces and context
@@ -93,10 +97,10 @@ Tier 3 (Emerging):
 Each language was chosen based on:
 
 1. **Developer Population**: Target languages with 2M+ developers (Python, JS)
-2. **Use Case Alignment**: Domains where Rust provides clear value (systems, performance)
-3. **Binding Maturity**: Stable, well-maintained FFI crates available
-4. **Community Support**: Active issue resolution and security updates
-5. **Performance Requirements**: Expected FFI overhead acceptable for use case
+1. **Use Case Alignment**: Domains where Rust provides clear value (systems, performance)
+1. **Binding Maturity**: Stable, well-maintained FFI crates available
+1. **Community Support**: Active issue resolution and security updates
+1. **Performance Requirements**: Expected FFI overhead acceptable for use case
 
 ## Binding Strategy: Thin Wrappers, Rust Core as Truth
 
@@ -122,18 +126,21 @@ Each language was chosen based on:
 ### Thin Wrapper Principle
 
 Bindings are intentionally thin to minimize:
+
 - Maintenance burden (avoid duplicate logic)
 - Version skew (single source of truth)
 - Bug surface (less code = fewer bugs)
 - Testing complexity (delegate to core tests)
 
 **Binding Layer Responsibilities:**
+
 - Type mapping (Rust ↔ Host language)
 - Error conversion (Rust Result → Host exceptions)
 - Memory management (reference counting, GC integration)
 - Concurrency adaptation (Tokio → language runtimes)
 
 **Core Library Responsibilities:**
+
 - All algorithms and business logic
 - Data structure implementations
 - Configuration and defaults
@@ -216,17 +223,20 @@ impl Config {
 ### Consistency Principles
 
 1. **Naming Convention**: Same method names across all languages
+
    - `create_client()` in Rust → `create_client()` in Python/Ruby/Go
    - `from_config()` → `from_config()` (not `FromConfig()` in Python)
    - Exceptions: Language idioms override if unavoidable (C# → PascalCase)
 
-2. **Function Signature Alignment**
+1. **Function Signature Alignment**
+
    - Same parameters in same order
    - Same return types (mapped appropriately)
    - Same error conditions and messages
    - Same default values
 
-3. **Behavioral Consistency**
+1. **Behavioral Consistency**
+
    - Side effects identical across languages
    - Error messages identical
    - Performance characteristics within 10%

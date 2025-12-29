@@ -1,12 +1,10 @@
----
-name: wasm-bindings-engineer
-description: WebAssembly bindings with wasm-bindgen
-model: haiku
----
+______________________________________________________________________
+
+## name: wasm-bindings-engineer description: WebAssembly bindings with wasm-bindgen model: haiku
 
 # wasm-bindings-engineer
 
-**Responsibilities**: Develop WASM bindings using wasm-bindgen (crates/*-wasm), create npm package for browser/Node.js/Deno/Cloudflare Workers (packages/wasm), optimize bundle size, write tests for all WASM environments. Support both web and server-side WASM runtimes.
+**Responsibilities**: Develop WASM bindings using wasm-bindgen (crates/\*-wasm), create npm package for browser/Node.js/Deno/Cloudflare Workers (packages/wasm), optimize bundle size, write tests for all WASM environments. Support both web and server-side WASM runtimes.
 
 **Key Commands**: `wasm-pack build`, `wasm-pack test --node`, `wasm-pack test --headless --chrome`, `wasm-pack test --headless --firefox`
 

@@ -1,8 +1,6 @@
----
-name: test-automation-engineer
-description: Testing across all language bindings and E2E verification
-model: haiku
----
+______________________________________________________________________
+
+## name: test-automation-engineer description: Testing across all language bindings and E2E verification model: haiku
 
 # test-automation-engineer
 
@@ -12,6 +10,6 @@ model: haiku
 
 **E2E**: Auto-generated from fixtures via tools/e2e-generator. Located in e2e/{rust,python,typescript,ruby,java,go}. Regenerate: cargo run -p kreuzberg-e2e-generator -- generate --lang <lang>.
 
-**Naming**: test_<function>_<scenario>_<outcome> (Rust/Python). Test error paths, edge cases, real objects over mocks.
+**Naming**: test\_<function>_<scenario>_<outcome> (Rust/Python). Test error paths, edge cases, real objects over mocks.
 
 **Rust-first**: Ensure core is thoroughly tested before bindings. 95% min coverage on core, 80%+ on bindings.

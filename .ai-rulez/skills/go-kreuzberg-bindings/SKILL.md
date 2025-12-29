@@ -1,6 +1,6 @@
----
-priority: high
----
+______________________________________________________________________
+
+## priority: high
 
 # Go Kreuzberg Bindings
 

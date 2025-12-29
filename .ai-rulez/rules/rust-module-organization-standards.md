@@ -1,6 +1,6 @@
----
-priority: high
----
+______________________________________________________________________
+
+## priority: high
 
 # Rust Module Organization Standards
 
@@ -23,8 +23,8 @@ priority: high
   ```
 - **Three-tier module structure**:
   1. **Public tier** (re-exported from lib.rs): Stable, versioned APIs
-  2. **Semi-private tier** (pub within crate, not re-exported): Internal-facing utilities
-  3. **Private tier** (private)**: Internal implementation details
+  1. **Semi-private tier** (pub within crate, not re-exported): Internal-facing utilities
+  1. **Private tier** (private)\*\*: Internal implementation details
 
 ### Submodule Organization
 

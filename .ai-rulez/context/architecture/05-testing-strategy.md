@@ -19,6 +19,7 @@ cargo tarpaulin --out Stdout --fail-under 95
 ```
 
 **Coverage Definition:**
+
 - Lines executed: 95% minimum
 - Branches covered: 90% minimum
 - Excluded: test-only code, examples, benches
@@ -26,6 +27,7 @@ cargo tarpaulin --out Stdout --fail-under 95
 **High-Coverage Strategies:**
 
 1. **Unit Tests** (70% of coverage)
+
    ```rust
    // src/models/request.rs
    #[cfg(test)]
@@ -67,7 +69,8 @@ cargo tarpaulin --out Stdout --fail-under 95
    }
    ```
 
-2. **Integration Tests** (20% of coverage)
+1. **Integration Tests** (20% of coverage)
+
    ```rust
    // tests/integration_tests.rs
    #[tokio::test]
@@ -110,8 +113,9 @@ cargo tarpaulin --out Stdout --fail-under 95
    }
    ```
 
-3. **Doc Tests** (5% of coverage)
-   ```rust
+1. **Doc Tests** (5% of coverage)
+
+   ````rust
    /// # Examples
    ///
    /// ```
@@ -126,7 +130,7 @@ cargo tarpaulin --out Stdout --fail-under 95
    pub async fn execute(&self, request: Request) -> Result<Response> {
        // Implementation
    }
-   ```
+   ````
 
 ### Language Bindings: 80% Coverage Requirement
 
@@ -323,7 +327,7 @@ bindings/typescript/tests/
 
 ### Test Categories
 
-```rust
+````rust
 // Unit Tests - Isolated component testing
 #[cfg(test)]
 mod unit_tests {
@@ -363,7 +367,7 @@ async fn test_full_request_lifecycle() {
     // Execute multiple requests
     // Verify results
 }
-```
+````
 
 ## CI Test Matrix Strategy
 

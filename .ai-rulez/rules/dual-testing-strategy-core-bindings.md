@@ -1,6 +1,6 @@
----
-priority: medium
----
+______________________________________________________________________
+
+## priority: medium
 
 # Dual Testing Strategy - Core + Bindings
 

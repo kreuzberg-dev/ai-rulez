@@ -26,11 +26,12 @@ We selected Tokio as the Rust async runtime during the core implementation. The 
 Tokio will be the standard async runtime for all asynchronous operations in the Rust core. This runtime is embedded in the core and cannot be replaced. Language bindings will:
 
 1. **Use Tokio internally:** The Rust core manages a Tokio runtime that handles async operations
-2. **Provide blocking bridges:** Bindings for synchronous languages (Python, PHP, Ruby) provide blocking adapter functions that use `tokio::task::block_on()` or similar mechanisms
-3. **Expose native async patterns:** Bindings for async-first languages (JavaScript, Go, C#) map Tokio futures to language-native async abstractions
-4. **Standard initialization:** Bindings handle runtime initialization transparently; users don't need to manually initialize Tokio
+1. **Provide blocking bridges:** Bindings for synchronous languages (Python, PHP, Ruby) provide blocking adapter functions that use `tokio::task::block_on()` or similar mechanisms
+1. **Expose native async patterns:** Bindings for async-first languages (JavaScript, Go, C#) map Tokio futures to language-native async abstractions
+1. **Standard initialization:** Bindings handle runtime initialization transparently; users don't need to manually initialize Tokio
 
 For example:
+
 - **Python async binding:** Returns `asyncio.Future` that bridges Tokio tasks
 - **JavaScript binding:** Returns native Promise
 - **Go binding:** Uses channel-based adapters
@@ -39,6 +40,7 @@ For example:
 ## Consequences
 
 ### Positive
+
 - **Consistent async semantics:** All async operations behave identically across bindings
 - **Proven runtime:** Tokio is battle-tested, production-grade, widely used
 - **High performance:** Tokio provides excellent performance for concurrent operations
@@ -47,6 +49,7 @@ For example:
 - **Predictable resource usage:** Unified runtime prevents resource contention between multiple runtimes
 
 ### Negative
+
 - **Initialization overhead:** Tokio runtime incurs startup costs, even for synchronous operations
 - **Memory overhead:** Tokio maintains thread pool and scheduler state
 - **Blocking bridge complexity:** Synchronous language bindings must handle blocking semantics correctly
@@ -68,10 +71,10 @@ Tokio runtime configuration will be exposed through binding APIs:
 For synchronous languages:
 
 1. Use `tokio::task::block_on()` to block on async operations
-2. Ensure blocking operations don't hold locks across boundaries
-3. Document which operations are blocking to users
-4. Provide timeout parameters for all blocking operations
-5. Handle Tokio runtime panics gracefully
+1. Ensure blocking operations don't hold locks across boundaries
+1. Document which operations are blocking to users
+1. Provide timeout parameters for all blocking operations
+1. Handle Tokio runtime panics gracefully
 
 ### Future Considerations
 

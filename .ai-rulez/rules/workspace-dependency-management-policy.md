@@ -1,6 +1,6 @@
----
-priority: critical
----
+______________________________________________________________________
+
+## priority: critical
 
 # Workspace Dependency Management Policy
 
@@ -46,13 +46,13 @@ priority: critical
 ### Version Management Process
 
 1. **Increment workspace version** in `Cargo.toml` (root)
-2. **Run sync_versions.py** to update language-specific versions:
+1. **Run sync_versions.py** to update language-specific versions:
    ```bash
    python scripts/sync_versions.py 1.2.3
    ```
-3. **Commit Cargo.toml + version sync outputs** atomically
-4. **Tag release** on git: `git tag v1.2.3`
-5. **Verify all lock files updated** before pushing
+1. **Commit Cargo.toml + version sync outputs** atomically
+1. **Tag release** on git: `git tag v1.2.3`
+1. **Verify all lock files updated** before pushing
 
 ## Workspace Inheritance Patterns
 
@@ -188,9 +188,9 @@ priority: critical
 - **Dependency audit**: `cargo audit` run before updating lock files
 - **Automated update process**:
   1. `cargo update` (respects semver constraints)
-  2. `cargo audit` (verify no vulnerabilities)
-  3. `cargo build --workspace` (test full build)
-  4. Commit Cargo.lock atomically
+  1. `cargo audit` (verify no vulnerabilities)
+  1. `cargo build --workspace` (test full build)
+  1. Commit Cargo.lock atomically
 
 ### Lock File Conflicts
 
@@ -222,6 +222,7 @@ priority: critical
 ### Dependency Audit Checklist
 
 Before updating Cargo.lock:
+
 - [ ] Run `cargo audit` and verify no vulnerabilities (exit code 0)
 - [ ] Verify all dependencies have active maintenance
 - [ ] Check MSRV compatibility for updated versions

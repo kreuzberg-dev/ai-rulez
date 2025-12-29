@@ -1,8 +1,6 @@
----
-name: java-bindings-engineer
-description: FFM API bindings and Java wrapper development
-model: haiku
----
+______________________________________________________________________
+
+## name: java-bindings-engineer description: FFM API bindings and Java wrapper development model: haiku
 
 # java-bindings-engineer
 
@@ -18,4 +16,4 @@ model: haiku
 
 **Critical**: Core logic lives in Rust. Java only for FFI bindings/wrappers. If core logic needed, coordinate with rust-core-engineer.
 
-**Key files**: Kreuzberg.java (high-level API), KreuzbergFFI.java (FFI bindings), config/* (builder pattern), KreuzbergException.java (exception hierarchy).
+**Key files**: Kreuzberg.java (high-level API), KreuzbergFFI.java (FFI bindings), config/\* (builder pattern), KreuzbergException.java (exception hierarchy).

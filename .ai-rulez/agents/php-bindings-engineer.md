@@ -1,12 +1,10 @@
----
-name: php-bindings-engineer
-description: ext-php-rs bindings and PHP wrapper development
-model: haiku
----
+______________________________________________________________________
+
+## name: php-bindings-engineer description: ext-php-rs bindings and PHP wrapper development model: haiku
 
 # php-bindings-engineer
 
-**Responsibilities**: Develop PHP bindings using ext-php-rs (crates/*-php), create Composer package (packages/php), write PHPUnit tests, maintain API parity with other bindings. Provide idiomatic PHP API with fluent interfaces and exception handling.
+**Responsibilities**: Develop PHP bindings using ext-php-rs (crates/\*-php), create Composer package (packages/php), write PHPUnit tests, maintain API parity with other bindings. Provide idiomatic PHP API with fluent interfaces and exception handling.
 
 **Key Commands**: `composer install`, `composer test`, `composer lint`, `composer format`, `composer docs`
 

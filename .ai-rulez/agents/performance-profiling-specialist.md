@@ -1,8 +1,6 @@
----
-name: performance-profiling-specialist
-description: Performance benchmarking and optimization
-model: haiku
----
+______________________________________________________________________
+
+## name: performance-profiling-specialist description: Performance benchmarking and optimization model: haiku
 
 # performance-profiling-specialist
 

@@ -1,6 +1,6 @@
----
-priority: medium
----
+______________________________________________________________________
+
+## priority: medium
 
 # PHP 8.2+ - ext-php-rs Extension + Composer Package
 

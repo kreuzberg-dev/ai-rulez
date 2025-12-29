@@ -1,6 +1,6 @@
----
-priority: critical
----
+______________________________________________________________________
+
+## priority: critical
 
 # Polyglot Security Hardening
 
@@ -22,12 +22,12 @@ Security is a shared responsibility across all language ecosystems. Rust core, P
 ### Disclosure Timeline
 
 1. **Day 0**: Vulnerability report received
-2. **Day 1**: Acknowledge receipt, assign security team member
-3. **Day 7**: Root cause analysis complete, fix in progress
-4. **Day 30**: Fix implemented in main branch (not released)
-5. **Day 89**: Release with fix prepared and tested
-6. **Day 90**: Public disclosure + simultaneous release across all ecosystems
-7. **Day 91**: CVE advisory published, security bulletin issued
+1. **Day 1**: Acknowledge receipt, assign security team member
+1. **Day 7**: Root cause analysis complete, fix in progress
+1. **Day 30**: Fix implemented in main branch (not released)
+1. **Day 89**: Release with fix prepared and tested
+1. **Day 90**: Public disclosure + simultaneous release across all ecosystems
+1. **Day 91**: CVE advisory published, security bulletin issued
 
 ### Public Disclosure Components
 
@@ -49,6 +49,7 @@ Security is a shared responsibility across all language ecosystems. Rust core, P
 ```
 
 Requirements:
+
 - All dependencies must pass audit
 - No published vulnerabilities allowed
 - RUSTSEC advisories checked on every commit
@@ -66,6 +67,7 @@ Requirements:
 ```
 
 Requirements:
+
 - All Python dependencies audited
 - PyPI CVE advisories checked
 - No known vulnerabilities in published versions
@@ -83,6 +85,7 @@ Requirements:
 ```
 
 Requirements:
+
 - npm ecosystem scanned on every commit
 - Critical vulnerabilities block build
 - Moderate/High vulnerabilities generate reports
@@ -145,54 +148,64 @@ Requirements:
 All web-facing bindings must comply with OWASP Top 10 2023:
 
 1. **Broken Access Control**
+
    - No hardcoded credentials in bindings
    - Input validation at binding boundary
    - Authorization checks enforced
 
-2. **Cryptographic Failures**
+1. **Cryptographic Failures**
+
    - Use validated crypto libraries only
    - No custom crypto implementations
    - TLS 1.3+ for network communication
 
-3. **Injection**
+1. **Injection**
+
    - Parameterized inputs for all queries
    - Input sanitization at FFI boundary
    - No shell execution from user input
 
-4. **Insecure Design**
+1. **Insecure Design**
+
    - Threat model documented for bindings
    - Security review before public API exposure
    - Principle of least privilege in permissions
 
-5. **Security Misconfiguration**
+1. **Security Misconfiguration**
+
    - Default secure configurations
    - No debug features in production builds
    - Security headers configured
 
-6. **Vulnerable Components**
+1. **Vulnerable Components**
+
    - All dependencies audited (see audit pipeline above)
    - Update cadence: security patches within 2 weeks
    - Known vulnerability tracking
 
-7. **Authentication Failures**
+1. **Authentication Failures**
+
    - No authentication in core library (delegated to user)
    - Secure token handling in bindings
    - Multi-factor support documentation
 
-8. **Software & Data Integrity Failures**
+1. **Software & Data Integrity Failures**
+
    - Signed releases (GPG/cosign)
    - Hash verification for artifacts
    - Checksum validation in installers
 
-9. **Logging & Monitoring Failures**
+1. **Logging & Monitoring Failures**
+
    - Security events logged (not audit trail, unless explicitly enabled)
    - Error messages don't leak sensitive data
    - Monitoring integration documented
 
-10. **SSRF/XXE/External Integrations**
-    - No arbitrary URL fetching from bindings
-    - XML parsing restricted to safe parsers
-    - External service integrations documented
+1. **SSRF/XXE/External Integrations**
+
+   - No arbitrary URL fetching from bindings
+   - XML parsing restricted to safe parsers
+   - External service integrations documented
 
 ### Compliance Verification
 
@@ -219,11 +232,12 @@ unsafe { ptr::drop_in_place(ptr) }
 ### SAFETY Comment Guidelines
 
 Required elements:
+
 1. **Why it's safe**: Explicit justification
-2. **Preconditions met**: What assumptions we make
-3. **No data races**: Ensure thread-safety guarantees
-4. **No UB triggers**: Verify no undefined behavior
-5. **Lifetime validity**: Confirm all references valid
+1. **Preconditions met**: What assumptions we make
+1. **No data races**: Ensure thread-safety guarantees
+1. **No UB triggers**: Verify no undefined behavior
+1. **Lifetime validity**: Confirm all references valid
 
 ### Unsafe Code Audit
 
@@ -263,10 +277,10 @@ fuzz_target!(|data: &[u8]| {
 Fuzzing targets must cover:
 
 1. **Parser fuzzing**: Random input to parse functions
-2. **FFI boundary fuzzing**: C ABI fuzzing for bindings
-3. **HTML edge cases**: Malformed, nested, extreme size inputs
-4. **Unicode handling**: Invalid UTF-8, surrogate pairs, BOM
-5. **Performance limits**: Very large inputs (memory, CPU)
+1. **FFI boundary fuzzing**: C ABI fuzzing for bindings
+1. **HTML edge cases**: Malformed, nested, extreme size inputs
+1. **Unicode handling**: Invalid UTF-8, surrogate pairs, BOM
+1. **Performance limits**: Very large inputs (memory, CPU)
 
 ### Fuzzing CI Integration
 

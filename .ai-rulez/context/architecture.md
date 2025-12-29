@@ -1,6 +1,6 @@
----
-priority: high
----
+______________________________________________________________________
+
+## priority: high
 
 # Kreuzberg Architecture Overview
 
@@ -8,23 +8,25 @@ priority: high
 
 This document is your entry point to understanding the entire architecture. For detailed information, navigate through the table of contents below or consult the specialized documentation links throughout.
 
----
+______________________________________________________________________
 
 ## Table of Contents
 
 ### Architecture Documentation
+
 - [Core Architecture](#core-architecture)
 - [Domain Organization](#domain-organization)
 - [Polyglot Design Pattern](#polyglot-design-pattern)
 - [Key Agents & Responsibilities](#key-agents--responsibilities)
 
 ### Quick Navigation
+
 - [Quick Start for Developers](#quick-start-for-developers)
 - [For Consuming Projects](#for-consuming-projects)
 - [Detailed Architecture Resources](#detailed-architecture-resources)
 - [Decision Records](#decision-records)
 
----
+______________________________________________________________________
 
 ## Core Architecture
 
@@ -83,7 +85,7 @@ The Rust core is organized into focused modules managed by the `rust-core-engine
 - **text**: Text processing utilities
 - **utils**: General utility functions
 
----
+______________________________________________________________________
 
 ## Domain Organization
 
@@ -92,40 +94,48 @@ Kreuzberg uses a **domain-driven architecture** to organize agents, skills, and 
 ### Eight Core Domains
 
 1. **rust-core** - Core library implementation
+
    - Rust 2024 edition, Tokio async, plugin system
    - Primary agent: `rust-core-engineer`
 
-2. **ffi-bindings** - C-compatible foreign function interfaces
+1. **ffi-bindings** - C-compatible foreign function interfaces
+
    - Pointer marshaling, memory safety, cross-platform distribution
    - Languages: Java, Go, C#
    - Managed by: `rust-core-engineer` and language binding engineers
 
-3. **language-bindings** - Language-specific wrapper libraries
+1. **language-bindings** - Language-specific wrapper libraries
+
    - PyO3 (Python), NAPI-RS (TypeScript), Magnus (Ruby), ext-php-rs (PHP), JNI/FFI (Java), cgo (Go), P/Invoke (C#), Rustler (Elixir), wasm-bindgen (WebAssembly)
    - 6 language binding engineer agents (python, typescript, ruby, java, go, php)
    - Primary coordinator: `polyglot-architect`
 
-4. **build-distribution** - Build orchestration and packaging
+1. **build-distribution** - Build orchestration and packaging
+
    - Cross-platform compilation, artifact publishing, dependency management
    - Agents: `dependency-management-coordinator`, `release-versioning-coordinator`
 
-5. **quality-verification** - Testing, CI/CD, code review
+1. **quality-verification** - Testing, CI/CD, code review
+
    - Test strategies, coverage enforcement, automated reviews
    - Agents: `test-automation-engineer`, `code-reviewer`, `performance-profiling-specialist`
 
-6. **documentation** - API reference, tutorials, guides
+1. **documentation** - API reference, tutorials, guides
+
    - Polyglot API consistency, language parity
    - Agents: `docs-writer`, `api-doc-writer`, `tutorial-writer`
 
-7. **devops-infrastructure** - CI/CD workflows, deployment pipelines
+1. **devops-infrastructure** - CI/CD workflows, deployment pipelines
+
    - GitHub Actions, multi-platform matrix testing
    - Agent: `devops-infrastructure-engineer`
 
-8. **organizational** - Governance, standards, principles
+1. **organizational** - Governance, standards, principles
+
    - Architecture decisions, coding standards, security policies
    - Coordinated by: `polyglot-architect`
 
----
+______________________________________________________________________
 
 ## Polyglot Design Pattern
 
@@ -134,11 +144,11 @@ Kreuzberg uses a **domain-driven architecture** to organize agents, skills, and 
 Each language binding is designed as a **thin wrapper** that:
 
 1. **Exposes the Rust core** through language-native FFI frameworks
-2. **Adds language-idiomatic APIs** (not duplicating business logic)
-3. **Maintains behavioral consistency** with the Rust reference implementation
-4. **Provides type safety** appropriate to each language (type stubs, generics, type definitions)
-5. **Handles exceptions** with language-appropriate error hierarchies
-6. **Achieves 80%+ test coverage** using language-native test frameworks
+1. **Adds language-idiomatic APIs** (not duplicating business logic)
+1. **Maintains behavioral consistency** with the Rust reference implementation
+1. **Provides type safety** appropriate to each language (type stubs, generics, type definitions)
+1. **Handles exceptions** with language-appropriate error hierarchies
+1. **Achieves 80%+ test coverage** using language-native test frameworks
 
 ### Supported Language Ecosystems
 
@@ -158,13 +168,14 @@ Each language binding is designed as a **thin wrapper** that:
 
 The `polyglot-architect` ensures all language bindings expose equivalent APIs. For example, if the Rust core has `extract()`, `chunk()`, and `validate()` methods, all language bindings must expose equivalent functions with language-idiomatic names and signatures.
 
----
+______________________________________________________________________
 
 ## Key Agents & Responsibilities
 
 ### Strategic Leadership
 
 **polyglot-architect** (Sonnet model)
+
 - System design for multi-language FFI integration
 - Architecture Decision Records (ADRs) for major changes
 - Language-binding coordination and feature parity enforcement
@@ -175,6 +186,7 @@ The `polyglot-architect` ensures all language bindings expose equivalent APIs. F
 ### Core Implementation
 
 **rust-core-engineer** (Haiku model)
+
 - All Rust core library development (PRIMARY ROLE)
 - Rust 2024 edition standards, zero clippy warnings
 - Tokio async patterns and performance optimization
@@ -209,36 +221,41 @@ The `polyglot-architect` ensures all language bindings expose equivalent APIs. F
 - **tutorial-writer** - Getting started guides and examples
 - **code-reviewer** - Code quality and consistency reviews
 
----
+______________________________________________________________________
 
 ## Quick Start for Developers
 
 ### Setting Up Your Development Environment
 
 1. **Clone the repository:**
+
    ```bash
    git clone <repository-url>
    cd ai-rulez
    ```
 
-2. **Install Rust toolchain** (Rust 2024 edition required):
+1. **Install Rust toolchain** (Rust 2024 edition required):
+
    ```bash
    rustup toolchain install nightly
    rustup override set nightly
    ```
 
-3. **Build the Rust core:**
+1. **Build the Rust core:**
+
    ```bash
    cargo build --release
    ```
 
-4. **Run Rust tests** (95% coverage expected):
+1. **Run Rust tests** (95% coverage expected):
+
    ```bash
    cargo test
    cargo tarpaulin --out Html  # coverage report
    ```
 
-5. **For specific language binding development:**
+1. **For specific language binding development:**
+
    - **Python:** `maturin develop` (builds PyO3 bindings)
    - **TypeScript:** `npm install && npm test` (in packages/typescript)
    - **Ruby:** `bundle install && bundle exec rspec` (in packages/ruby)
@@ -248,11 +265,11 @@ The `polyglot-architect` ensures all language bindings expose equivalent APIs. F
 ### Key Development Principles
 
 1. **Rust is the source of truth** - All business logic lives in `crates/kreuzberg/src/`
-2. **Test first, implement second** - Minimum 95% coverage for Rust core, 80%+ for bindings
-3. **Bindings are thin wrappers** - No duplicate logic in language-specific code
-4. **Document every public API** - Use `///` doc comments with examples
-5. **No .unwrap() in production** - Always use `Result<T, KreuzbergError>`
-6. **Type safety throughout** - Leverage each language's type system to the fullest
+1. **Test first, implement second** - Minimum 95% coverage for Rust core, 80%+ for bindings
+1. **Bindings are thin wrappers** - No duplicate logic in language-specific code
+1. **Document every public API** - Use `///` doc comments with examples
+1. **No .unwrap() in production** - Always use `Result<T, KreuzbergError>`
+1. **Type safety throughout** - Leverage each language's type system to the fullest
 
 ### Common Development Tasks
 
@@ -265,7 +282,7 @@ The `polyglot-architect` ensures all language bindings expose equivalent APIs. F
 | Run benchmarks | `cargo bench -p kreuzberg` (Rust) |
 | Create release build | `cargo build --release` (with platform-specific targets) |
 
----
+______________________________________________________________________
 
 ## For Consuming Projects
 
@@ -274,6 +291,7 @@ The `polyglot-architect` ensures all language bindings expose equivalent APIs. F
 Kreuzberg provides consistent APIs across all language ecosystems. Choose the binding that matches your project's language:
 
 ### Python
+
 ```python
 from kreuzberg import extract, chunk, validate
 
@@ -288,6 +306,7 @@ is_valid = validate(result)
 ```
 
 ### TypeScript
+
 ```typescript
 import { extract, chunk, validate } from 'kreuzberg';
 
@@ -297,6 +316,7 @@ const isValid = await validate(result);
 ```
 
 ### Ruby
+
 ```ruby
 require 'kreuzberg'
 
@@ -321,7 +341,7 @@ All language bindings expose equivalent feature sets. If a feature exists in Pyt
 
 Check the latest release notes to understand which features are available in your version.
 
----
+______________________________________________________________________
 
 ## Detailed Architecture Resources
 
@@ -330,11 +350,13 @@ Check the latest release notes to understand which features are available in you
 The `.ai-rulez/context/` directory contains detailed architecture documentation:
 
 - **`architecture/`** - Detailed domain documentation (when created):
+
   - Domain-specific architecture patterns
   - Technology stack decisions
   - Integration points between domains
 
 - **`decision-records/`** - Architecture Decision Records (ADRs) (when created):
+
   - Major architectural decisions and trade-offs
   - RFCs for significant features
   - Migration guides for breaking changes
@@ -349,11 +371,11 @@ The `.ai-rulez/context/` directory contains detailed architecture documentation:
 ### Key Agents to Learn From
 
 1. Start with **polyglot-architect** for system-wide design patterns
-2. Understand **rust-core-engineer** for Rust core conventions
-3. Review specific binding engineer documentation for your language
-4. Check **ffi-maintenance-engineer** if working on cross-language integration
+1. Understand **rust-core-engineer** for Rust core conventions
+1. Review specific binding engineer documentation for your language
+1. Check **ffi-maintenance-engineer** if working on cross-language integration
 
----
+______________________________________________________________________
 
 ## Decision Records
 
@@ -362,11 +384,11 @@ Architecture Decision Records (ADRs) document major design decisions, trade-offs
 When a significant architectural decision is made, an ADR should be created to:
 
 1. Document the decision and its context
-2. Explain alternatives considered and why they were rejected
-3. Record the rationale for the chosen approach
-4. Capture any dependencies or migration considerations
+1. Explain alternatives considered and why they were rejected
+1. Record the rationale for the chosen approach
+1. Capture any dependencies or migration considerations
 
----
+______________________________________________________________________
 
 ## Directory Structure
 
@@ -415,29 +437,29 @@ packages/
 └── wasm/                      # WebAssembly package
 ```
 
----
+______________________________________________________________________
 
 ## Key Principles
 
 ### Architectural Principles
 
 1. **Rust-First** - All extraction logic in Rust core; language bindings are thin wrappers
-2. **Feature Parity** - All language bindings expose equivalent APIs
-3. **Type Safety** - Leverage each language's type system (stubs, generics, type definitions)
-4. **Test Coverage** - 95% for Rust core, 80%+ for language bindings
-5. **Performance** - SIMD, streaming, zero-copy patterns where applicable
-6. **Extensibility** - Plugin system for custom extractors, OCR backends, post-processors
+1. **Feature Parity** - All language bindings expose equivalent APIs
+1. **Type Safety** - Leverage each language's type system (stubs, generics, type definitions)
+1. **Test Coverage** - 95% for Rust core, 80%+ for language bindings
+1. **Performance** - SIMD, streaming, zero-copy patterns where applicable
+1. **Extensibility** - Plugin system for custom extractors, OCR backends, post-processors
 
 ### Development Principles
 
 1. **Dependency Injection** - Better testability and flexibility
-2. **Interface-Based Design** - Loose coupling between components
-3. **Clear Separation of Concerns** - Business logic separate from infrastructure
-4. **No Unsafe in Production** - All unsafe Rust code must have SAFETY documentation
-5. **Documentation Driven** - All public APIs have doc comments with examples
-6. **Semantic Versioning** - Clear versioning across all language ecosystems
+1. **Interface-Based Design** - Loose coupling between components
+1. **Clear Separation of Concerns** - Business logic separate from infrastructure
+1. **No Unsafe in Production** - All unsafe Rust code must have SAFETY documentation
+1. **Documentation Driven** - All public APIs have doc comments with examples
+1. **Semantic Versioning** - Clear versioning across all language ecosystems
 
----
+______________________________________________________________________
 
 ## Getting Help
 

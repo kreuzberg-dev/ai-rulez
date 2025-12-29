@@ -1,6 +1,6 @@
----
-priority: critical
----
+______________________________________________________________________
+
+## priority: critical
 
 # Polyglot Error Handling Standardization
 
@@ -20,6 +20,7 @@ Error handling is language-specific; FFI boundaries MUST convert between error m
 - All error paths must be handled before returning to host language
 
 ### Conversion Example (Rust → Python)
+
 ```rust
 // Rust core (kreuzberg_core::lib.rs)
 pub fn parse_document(data: &[u8]) -> Result<Document, ParseError> {

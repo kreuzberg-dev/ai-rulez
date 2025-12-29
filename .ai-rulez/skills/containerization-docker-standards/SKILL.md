@@ -1,6 +1,6 @@
----
-priority: medium
----
+______________________________________________________________________
+
+## priority: medium
 
 # Containerization & Docker Standards
 
@@ -114,18 +114,21 @@ jobs:
 ### Minimal Base Images
 
 **Alpine Linux** (5MB base):
+
 - Smallest available
 - musl libc instead of glibc (affects some libraries)
 - Use `alpine:3.18` with clear version pin
 - Lightweight package manager (apk)
 
 **Distroless** (Google; ~20MB):
+
 - Only app + runtime, NO shell or package manager
 - Most secure; prevents interactive container access
 - Available for Java, Python, Node, Go, C++, CC, base
 - Cannot install additional tools (by design)
 
 **Scratch** (0 bytes):
+
 - Empty filesystem
 - Only works for fully static binaries
 - Perfect for single Go/Rust binaries compiled with `--target x86_64-unknown-linux-musl`
@@ -162,6 +165,7 @@ ENTRYPOINT ["/myapp"]
 ### Docker Layer Caching
 
 1. **Order matters**: Put stable layers first
+
    ```dockerfile
    # GOOD: Dependency layer cached until Cargo.lock changes
    FROM rust:1.75 AS builder
@@ -176,7 +180,8 @@ ENTRYPOINT ["/myapp"]
    RUN cargo build --release
    ```
 
-2. **BuildKit inline cache**: More efficient than standard Docker
+1. **BuildKit inline cache**: More efficient than standard Docker
+
    ```bash
    docker buildx build --push \
      --cache-from=type=registry,ref=myregistry/myapp:cache \
@@ -184,7 +189,8 @@ ENTRYPOINT ["/myapp"]
      -t myregistry/myapp:latest .
    ```
 
-3. **Mount cache volumes** (BuildKit):
+1. **Mount cache volumes** (BuildKit):
+
    ```dockerfile
    # Use cached cargo registry across builds
    RUN --mount=type=cache,target=/usr/local/cargo/registry \
@@ -262,12 +268,12 @@ volumes:
 ## Best Practices
 
 1. **Non-root user**: Always run container as non-root
-2. **Health checks**: Include HEALTHCHECK for orchestrators
-3. **Signal handling**: Use `tini` or `dumb-init` as PID 1
-4. **Read-only filesystem**: Run with `--read-only` when possible
-5. **Resource limits**: Set CPU/memory requests and limits
-6. **No secrets in image**: Use environment variables or secret mounts
-7. **Immutable tags**: Never reuse tags after push; use commit SHAs
+1. **Health checks**: Include HEALTHCHECK for orchestrators
+1. **Signal handling**: Use `tini` or `dumb-init` as PID 1
+1. **Read-only filesystem**: Run with `--read-only` when possible
+1. **Resource limits**: Set CPU/memory requests and limits
+1. **No secrets in image**: Use environment variables or secret mounts
+1. **Immutable tags**: Never reuse tags after push; use commit SHAs
 
 ## Anti-Patterns
 

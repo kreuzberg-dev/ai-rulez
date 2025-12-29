@@ -1,6 +1,6 @@
----
-priority: medium
----
+______________________________________________________________________
+
+## priority: medium
 
 # Monitoring & Observability Standards
 
@@ -107,6 +107,7 @@ async fn fetch_user_data(
 - **TRACE**: Very detailed, typically off in production (field assignments, loop iterations)
 
 Best practices:
+
 ```rust
 // ERROR: User made invalid request or system failure
 error!(error = ?e, "Failed to process payment");
@@ -340,6 +341,7 @@ async fn call_downstream_service(
 ## Anti-Patterns
 
 - **f-string logging**: Use structured key=value instead
+
   ```rust
   // BAD
   info!("User {} processed with status {}", user_id, status);
@@ -349,11 +351,17 @@ async fn call_downstream_service(
   ```
 
 - **No span context**: Always wrap request handling in spans with request ID
+
 - **Synchronous logging in hot path**: Use async subscribers in high-throughput services
+
 - **Hardcoded log levels**: Respect environment variable configuration
+
 - **Logging sensitive data**: Never log passwords, tokens, PII without redaction
+
 - **No metrics**: Always instrument critical paths (requests, errors, latency)
+
 - **High cardinality labels**: Avoid unbounded label values (user_id in label)
+
   ```rust
   // BAD: Unbounded cardinality
   REQUEST_COUNTER.with_label_values(&[method, &user_id.to_string()]).inc();
@@ -363,4 +371,5 @@ async fn call_downstream_service(
   ```
 
 - **No health checks**: Orchestrators can't detect unhealthy instances
+
 - **Sampling off**: Use tail-based sampling in production for cost

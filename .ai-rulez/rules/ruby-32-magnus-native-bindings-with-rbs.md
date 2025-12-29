@@ -1,6 +1,6 @@
----
-priority: medium
----
+______________________________________________________________________
+
+## priority: medium
 
 # Ruby 3.2+ - Magnus Native Bindings with RBS
 

@@ -48,15 +48,15 @@ src/
 Each module has a clear boundary and responsibility:
 
 1. **error.rs** - Error types, Display impl, conversions
-2. **config.rs** - Configuration parsing, validation, defaults
-3. **client.rs** - Primary public API, orchestration
-4. **models/* - Data structures, serialization support
-5. **transport/* - HTTP/protocol layer, retries
-6. **async_runtime/* - Tokio integration, executor wrapping
-7. **serialization/* - Encoding/decoding, codec selection
-8. **cache/* - Optional caching, eviction policies
-9. **middleware/* - Logging, tracing, metrics hooks
-10. **util/* - Macros, helper functions (non-public)
+1. **config.rs** - Configuration parsing, validation, defaults
+1. **client.rs** - Primary public API, orchestration
+1. \**models/* - Data structures, serialization support
+1. \**transport/* - HTTP/protocol layer, retries
+1. \**async_runtime/* - Tokio integration, executor wrapping
+1. \**serialization/* - Encoding/decoding, codec selection
+1. \**cache/* - Optional caching, eviction policies
+1. \**middleware/* - Logging, tracing, metrics hooks
+1. \**util/* - Macros, helper functions (non-public)
 
 ### Visibility Rules
 
@@ -129,16 +129,19 @@ impl Client {
 ### Stability Guarantees
 
 1. **Public API Stability**
+
    - No breaking changes in minor versions
    - Deprecation warnings for 2+ minor versions before removal
    - Clear CHANGELOG.md entries
 
-2. **Behavioral Stability**
+1. **Behavioral Stability**
+
    - Error messages are part of the contract
    - Return types and order are stable
    - Default values documented and unchanging
 
-3. **Performance Stability**
+1. **Performance Stability**
+
    - No regressions in time complexity
    - Memory usage within 10% of previous versions
    - Async operations maintain latency bounds
@@ -147,7 +150,7 @@ impl Client {
 
 Every public item has comprehensive documentation:
 
-```rust
+````rust
 /// Executes a request with automatic retry and timeout handling.
 ///
 /// # Arguments
@@ -181,7 +184,7 @@ Every public item has comprehensive documentation:
 pub async fn execute(&self, request: Request) -> Result<Response, Error> {
     // implementation
 }
-```
+````
 
 ## Feature Gate Strategy
 

@@ -1,6 +1,6 @@
----
-priority: critical
----
+______________________________________________________________________
+
+## priority: critical
 
 # Python Modern & Performance Standards
 
@@ -15,5 +15,5 @@ priority: critical
 - contextlib.suppress for intentional exception suppression
 - O(1) optimization: dict/set lookups over if/elif chains
 - Fully async: anyio.Path (not pathlib), httpx AsyncClient, asyncpg, asyncio.gather
-- Function-based tests ONLY (*_test.py); pytest fixtures, 95% coverage, real PostgreSQL
+- Function-based tests ONLY (\*\_test.py); pytest fixtures, 95% coverage, real PostgreSQL
 - Never: class tests, pydantic, sync I/O in async, Any type, Optional[T] (use T | None)

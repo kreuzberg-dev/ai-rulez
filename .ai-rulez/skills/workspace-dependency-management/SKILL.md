@@ -1,6 +1,6 @@
----
-priority: critical
----
+______________________________________________________________________
+
+## priority: critical
 
 # Workspace Dependency Management
 
@@ -9,6 +9,7 @@ priority: critical
 A workspace coordinates multiple crates under unified configuration. This is **critical** for polyglot projects with core library + language bindings.
 
 **workspace/Cargo.toml**:
+
 ```toml
 [workspace]
 members = [
@@ -40,6 +41,7 @@ rust-version = "1.70"
 **Solution**: Use workspace.package version inheritance + sync script.
 
 **In each crate's Cargo.toml**:
+
 ```toml
 [package]
 name = "html-to-markdown-py"
@@ -50,6 +52,7 @@ rust-version.workspace = true
 ```
 
 **Version sync script** (scripts/sync_versions.py):
+
 ```python
 #!/usr/bin/env python3
 import tomllib
@@ -90,6 +93,7 @@ if __name__ == "__main__":
 ```
 
 **Usage**:
+
 ```bash
 ./scripts/sync_versions.py 0.6.0
 cargo update -w  # Update workspace lockfile
@@ -108,23 +112,27 @@ pyo3 = { version = "0.20", features = ["extension-module"] }
 ```
 
 **Why version constraint + path?**
+
 - Path ensures local development uses local code
 - Version constraint ensures semver is respected if/when published to crates.io
 
 ## MSRV Policy (Minimum Supported Rust Version)
 
 **Define in workspace.package**:
+
 ```toml
 [workspace.package]
 rust-version = "1.70"
 ```
 
 **Update workflow**:
+
 1. Update `rust-version` in workspace Cargo.toml
-2. Add CI check to test MSRV
-3. Run: `cargo +1.70 test` to verify
+1. Add CI check to test MSRV
+1. Run: `cargo +1.70 test` to verify
 
 **CI workflow for MSRV**:
+
 ```yaml
 - name: Test MSRV
   run: |
@@ -163,6 +171,7 @@ tracing = "0.1"
 ```
 
 **Each crate imports from workspace**:
+
 ```toml
 [dependencies]
 tokio = { workspace = true, features = ["rt-multi-thread"] }
@@ -179,6 +188,7 @@ git commit -m "chore: update lockfile"
 ```
 
 This ensures:
+
 - CI builds are deterministic
 - Language bindings get same underlying Rust code
 - Security updates are tracked
@@ -188,11 +198,13 @@ This ensures:
 **Common pitfall**: Forgetting to add crate to workspace members.
 
 **Verify workspace integrity**:
+
 ```bash
 cargo metadata --format-version 1 | jq '.workspace_members'
 ```
 
 Should list all crates. If missing:
+
 ```toml
 [workspace]
 members = [
@@ -218,6 +230,7 @@ html-to-markdown (core library)
 ```
 
 **Bad structure** (avoid):
+
 ```
 - html-to-markdown depends on html-to-markdown-py
 - html-to-markdown-py depends on html-to-markdown
@@ -259,6 +272,7 @@ ffi = []
 ```
 
 **Binding crates enable needed features**:
+
 ```toml
 # html-to-markdown-py/Cargo.toml
 [dependencies]
@@ -268,6 +282,7 @@ html-to-markdown = { path = "../html-to-markdown", version = "0.5.0", features =
 ## Example: Real Workspace with Version Sync
 
 **Initial setup**:
+
 ```bash
 cargo new --lib crates/html-to-markdown
 cargo new --lib crates/html-to-markdown-py
@@ -284,6 +299,7 @@ version = "0.5.0"
 ```
 
 **Sync versions for 0.6.0 release**:
+
 ```bash
 ./scripts/sync_versions.py 0.6.0
 cargo test --all          # Verify all members still work
@@ -294,6 +310,7 @@ git add -A && git commit -m "chore: bump version to 0.6.0"
 ## Anti-Patterns to Avoid
 
 1. **Mismatched versions across crates**:
+
    ```toml
    # BAD: Different versions
    # html-to-markdown/Cargo.toml: version = "0.5.0"
@@ -303,7 +320,8 @@ git add -A && git commit -m "chore: bump version to 0.6.0"
    version.workspace = true
    ```
 
-2. **Circular dependencies**:
+1. **Circular dependencies**:
+
    ```toml
    # BAD: Core depends on binding
    # html-to-markdown/Cargo.toml:
@@ -312,7 +330,8 @@ git add -A && git commit -m "chore: bump version to 0.6.0"
    # GOOD: Only bindings depend on core
    ```
 
-3. **Uncommitted Cargo.lock**:
+1. **Uncommitted Cargo.lock**:
+
    ```bash
    # BAD: Cargo.lock in .gitignore
 
@@ -320,7 +339,8 @@ git add -A && git commit -m "chore: bump version to 0.6.0"
    git add Cargo.lock
    ```
 
-4. **Too many nested workspaces**:
+1. **Too many nested workspaces**:
+
    ```toml
    # BAD: Nested workspaces confuse resolution
    # /Cargo.toml: workspace with members
@@ -330,6 +350,7 @@ git add -A && git commit -m "chore: bump version to 0.6.0"
    ```
 
 ## Cross-references to Related Skills
+
 - **rust-module-organization-public-api-design**: APIs exposed across workspace members
 - **binding-crate-architecture-patterns**: Structure of binding crates within workspace
 - **build-profiles**: Coordinating build modes across workspace

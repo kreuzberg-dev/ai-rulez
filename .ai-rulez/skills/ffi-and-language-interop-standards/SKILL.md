@@ -1,6 +1,6 @@
----
-priority: critical
----
+______________________________________________________________________
+
+## priority: critical
 
 # FFI and Language Interop Standards
 
@@ -157,6 +157,7 @@ pub unsafe extern "C" fn htm2md_converter_free(handle: HtmlConverterHandle) {
 **cbindgen** automatically generates C headers from Rust FFI code.
 
 **cbindgen.toml**:
+
 ```toml
 language = "C"
 header = "/* Auto-generated FFI header */"
@@ -174,6 +175,7 @@ mangle = { "prefix" = "" }
 ```
 
 **Generate header**:
+
 ```bash
 # Install cbindgen
 cargo install cbindgen
@@ -187,6 +189,7 @@ cbindgen --verify --crate html-to-markdown-ffi
 ```
 
 **Example generated header**:
+
 ```c
 #ifndef HTML_TO_MARKDOWN_FFI_H
 #define HTML_TO_MARKDOWN_FFI_H
@@ -475,6 +478,7 @@ mod ffi_tests {
 ## Anti-Patterns to Avoid
 
 1. **Exposing Rust types directly**:
+
    ```rust
    // BAD: Callers can't safely use Rust internals
    pub struct HtmlConverter { ... }  // Opaque to C
@@ -484,7 +488,8 @@ mod ffi_tests {
    pub fn get_config(handle: HtmlConverterHandle) -> ConfigHandle { ... }
    ```
 
-2. **Forgetting null checks**:
+1. **Forgetting null checks**:
+
    ```rust
    // BAD: Assumes valid pointer
    pub unsafe extern "C" fn convert(html: *const c_char) -> *mut c_char {
@@ -501,7 +506,8 @@ mod ffi_tests {
    }
    ```
 
-3. **Returning stack data**:
+1. **Returning stack data**:
+
    ```rust
    // BAD: Buffer is freed after function returns
    pub unsafe extern "C" fn get_status() -> *const c_char {
@@ -516,6 +522,7 @@ mod ffi_tests {
    ```
 
 ## Cross-references to Related Skills
+
 - **binding-crate-architecture-patterns**: Wrapper layer above FFI
 - **rust-async-await-module-patterns**: Async code across FFI
 - **error-handling-strategy**: Error propagation through FFI

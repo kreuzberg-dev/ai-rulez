@@ -1,10 +1,11 @@
----
-priority: critical
----
+______________________________________________________________________
+
+## priority: critical
 
 # Universal Anti-Patterns
 
 **Never use:**
+
 - Any type (Python, TypeScript) - use Unknown/generics
 - Class-based tests (Python) - function-based only
 - Mocking internal services (any language) - use real objects

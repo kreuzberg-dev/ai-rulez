@@ -1,8 +1,6 @@
----
-name: devops-infrastructure-engineer
-description: CI/CD and infrastructure automation
-model: haiku
----
+______________________________________________________________________
+
+## name: devops-infrastructure-engineer description: CI/CD and infrastructure automation model: haiku
 
 # devops-infrastructure-engineer
 

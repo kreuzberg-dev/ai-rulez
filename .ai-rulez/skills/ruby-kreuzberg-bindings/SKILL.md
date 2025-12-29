@@ -1,6 +1,6 @@
----
-priority: high
----
+______________________________________________________________________
+
+## priority: high
 
 # Ruby Kreuzberg Bindings
 

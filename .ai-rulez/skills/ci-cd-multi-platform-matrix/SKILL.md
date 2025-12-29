@@ -1,6 +1,6 @@
----
-priority: critical
----
+______________________________________________________________________
+
+## priority: critical
 
 # CI/CD Multi-Platform Matrix
 
@@ -279,6 +279,7 @@ jobs:
 Organize workflows by language/domain to parallelize and reduce noise:
 
 **ci-rust.yaml** (Rust-specific testing):
+
 ```yaml
 name: CI - Rust
 
@@ -315,6 +316,7 @@ jobs:
 ```
 
 **ci-python.yaml** (Python-specific testing):
+
 ```yaml
 name: CI - Python
 
@@ -348,6 +350,7 @@ jobs:
 ```
 
 **ci-node.yaml** (Node.js/TypeScript-specific):
+
 ```yaml
 name: CI - Node.js
 
@@ -382,6 +385,7 @@ jobs:
 ```
 
 **ci-java.yaml** (Java-specific testing):
+
 ```yaml
 name: CI - Java
 
@@ -485,8 +489,11 @@ jobs:
 ## Anti-Patterns
 
 - **No fail-fast control**: Use `fail-fast: false` to run all matrix variants even if one fails
+
 - **Duplicating CI logic**: Extract common steps to reusable workflows
+
 - **Unbounded matrix expansion**: Avoid cartesian product of too many dimensions
+
   ```yaml
   # BAD: 3×4×3×2 = 72 jobs
   strategy:
@@ -506,8 +513,13 @@ jobs:
   ```
 
 - **No artifact caching**: Always cache dependencies and build artifacts
+
 - **Mixed domains in single workflow**: Separate Rust, Python, Node.js, Java into independent workflows
+
 - **Test failures not surfaced**: Always publish results to PR comments with action
+
 - **No cross-platform testing**: Test on Linux, macOS, Windows (especially for FFI bindings)
+
 - **Hardcoded versions**: Use matrix variables for all version-dependent steps
+
 - **No architecture testing**: Test both x86_64 and ARM64 (cross-compile with `cross` crate)

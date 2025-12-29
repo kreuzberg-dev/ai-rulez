@@ -1,8 +1,6 @@
----
-name: release-versioning-coordinator
-description: Multi-platform release coordination
-model: haiku
----
+______________________________________________________________________
+
+## name: release-versioning-coordinator description: Multi-platform release coordination model: haiku
 
 # release-versioning-coordinator
 

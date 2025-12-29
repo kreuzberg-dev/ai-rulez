@@ -1,13 +1,14 @@
----
-priority: medium
----
+______________________________________________________________________
+
+## priority: medium
 
 # Universal Anti-Patterns
 
 **Cross-language patterns to NEVER use:**
+
 - Any type (Python, TypeScript, Rust unknown) without exhaustive matching
 - Class-based tests (Python) – use function-based with pytest fixtures
-- Unwrap/panic in production code (Rust) – use Result<T, E>
+- Unwrap/panic in production code (Rust) – use Result\<T, E>
 - Mocking internal services – use real objects/fixtures
 - Manual dependency management – use lock files (Cargo.lock, pnpm-lock.yaml, etc.)
 - Blocking I/O in async code (Python/TypeScript) – fully async paths

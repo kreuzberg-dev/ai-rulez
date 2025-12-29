@@ -1,12 +1,13 @@
----
-priority: critical
----
+______________________________________________________________________
+
+## priority: critical
 
 # Agent Selection & Usage Guidelines
 
 **When to use agents**: Use the Task tool to spawn specialized agents for focused, language-specific work. Agents provide domain expertise and follow language-specific conventions.
 
 **Agent selection rules**:
+
 - **Rust core work** → rust-core-engineer (core library, extraction logic, plugins)
 - **Python bindings** → python-bindings-engineer (PyO3 FFI, Python wrappers, EasyOCR/PaddleOCR)
 - **TypeScript bindings** → typescript-bindings-engineer (NAPI-RS FFI, TS SDK)

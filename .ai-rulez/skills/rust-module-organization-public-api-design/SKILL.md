@@ -1,6 +1,6 @@
----
-priority: high
----
+______________________________________________________________________
+
+## priority: high
 
 # Rust Module Organization & Public API Design
 
@@ -9,9 +9,9 @@ priority: high
 **Modules are organizational units, not visibility boundaries**. Use `pub` / `pub(crate)` / `pub(super)` to control visibility explicitly.
 
 1. **Root crate module**: `src/lib.rs` or `src/main.rs` re-exports public items
-2. **Feature-specific modules**: `src/parsing/`, `src/conversion/`, `src/utils/` organize by domain
-3. **Internal vs. public**: Mark private modules with `pub(crate)` if they're internal infrastructure
-4. **Re-exports**: Use `pub use` in `lib.rs` to define the public API surface
+1. **Feature-specific modules**: `src/parsing/`, `src/conversion/`, `src/utils/` organize by domain
+1. **Internal vs. public**: Mark private modules with `pub(crate)` if they're internal infrastructure
+1. **Re-exports**: Use `pub use` in `lib.rs` to define the public API surface
 
 ## Module Hierarchy Example
 
@@ -38,7 +38,7 @@ src/
 
 **Golden Rule**: Your `src/lib.rs` should read like a user guide.
 
-```rust
+````rust
 //! html-to-markdown: Convert HTML to Markdown with safety & performance
 //!
 //! # Quick Start
@@ -58,23 +58,26 @@ pub type Result<T> = std::result::Result<T, Error>;
 
 // Don't re-export implementation details
 // pub use crate::parsing::html_parser;  // BAD
-```
+````
 
 ## Pub/Private Boundaries
 
 **Public** (`pub`): Part of stable API contract
+
 - Main types: `HtmlConverter`, `ConversionConfig`
 - Error types: `ParseError`, `ConversionError`
 - Common utility functions
 - Config builders
 
 **Pub(crate)** (`pub(crate)`): Internal infrastructure, not for external users
+
 ```rust
 pub(crate) struct InternalParser { ... }
 pub(crate) fn internal_helper() { ... }
 ```
 
 **Private** (no visibility keyword): Never exposed
+
 ```rust
 fn internal_detail() { ... }
 struct InternalState { ... }
@@ -108,6 +111,7 @@ pub use crate::ffi::ExportedAPI;
 ## Module Re-exports Pattern
 
 **Module interface** (`src/parsing/mod.rs`):
+
 ```rust
 //! HTML parsing module with robust error handling
 
@@ -123,6 +127,7 @@ use self::html_parser::HtmlToken;
 ```
 
 **Root re-export** (`src/lib.rs`):
+
 ```rust
 pub use crate::parsing::{Parser, ParseConfig};
 pub use crate::parsing::error::{ParseError, SyntaxError};
@@ -148,6 +153,7 @@ cargo public-api > current.txt
 ```
 
 Add to CI:
+
 ```yaml
 - name: Check public API
   run: |
@@ -158,6 +164,7 @@ Add to CI:
 ## Anti-Patterns to Avoid
 
 1. **Exposing implementation details**:
+
    ```rust
    // BAD: Leaks internal parser state
    pub use crate::parsing::internal::ParserState;
@@ -166,7 +173,8 @@ Add to CI:
    pub fn parse(input: &str) -> Result<Document> { ... }
    ```
 
-2. **Deeply nested modules in public API**:
+1. **Deeply nested modules in public API**:
+
    ```rust
    // BAD: Public `mod parsing { mod html_parser { ... } }`
    // Users write: html_to_markdown::parsing::html_parser::Parser
@@ -175,7 +183,8 @@ Add to CI:
    // Users write: html_to_markdown::Parser
    ```
 
-3. **Mixed public/private in single module**:
+1. **Mixed public/private in single module**:
+
    ```rust
    // BAD: Confusing what's stable
    pub fn stable_api() { ... }
@@ -186,7 +195,8 @@ Add to CI:
    mod internal { pub(crate) fn detail() { ... } }
    ```
 
-4. **Not documenting API stability**:
+1. **Not documenting API stability**:
+
    ```rust
    // BAD: Users don't know if this might change
    pub struct Config { ... }
@@ -203,7 +213,7 @@ Add to CI:
 - **Example code**: Show real usage patterns
 - **Error docs**: Document error conditions
 
-```rust
+````rust
 /// Converts HTML to Markdown
 ///
 /// # Examples
@@ -217,7 +227,7 @@ Add to CI:
 /// # Errors
 /// Returns `ParseError` if HTML is malformed beyond recovery.
 pub fn convert(html: &str) -> Result<String> { ... }
-```
+````
 
 ## Stability Markers
 
@@ -240,6 +250,7 @@ pub fn convert_old(input: &str) -> Result<String> { ... }
 ```
 
 ## Cross-references to Related Skills
+
 - **workspace-dependency-management**: Coordinating public API across crates
 - **error-handling-strategy**: Designing error types as part of public API
 - **testing-philosophy-coverage**: Testing public API surface

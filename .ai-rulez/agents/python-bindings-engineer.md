@@ -1,8 +1,6 @@
----
-name: python-bindings-engineer
-description: PyO3 bindings and Python wrapper development
-model: haiku
----
+______________________________________________________________________
+
+## name: python-bindings-engineer description: PyO3 bindings and Python wrapper development model: haiku
 
 # python-bindings-engineer
 

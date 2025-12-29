@@ -1,9 +1,11 @@
 # DevOps & Infrastructure Domain
 
 ## Purpose
+
 The devops-infrastructure domain manages continuous integration, continuous deployment, and infrastructure-as-code to ensure reliable, automated testing and distribution across multiple platforms, languages, and packaging ecosystems.
 
 ## Scope and Responsibilities
+
 - Design and maintain GitHub Actions workflows for multi-platform CI/CD
 - Implement split CI workflows by domain (ci-rust, ci-python, ci-node, ci-wasm, ci-ruby, ci-php, ci-go, ci-java, ci-validate)
 - Enforce linting and formatting checks (ruff, clippy, rubocop, biome, phpstan, golangci-lint)
@@ -20,21 +22,26 @@ The devops-infrastructure domain manages continuous integration, continuous depl
 - Implement pre-commit hooks integration (prek/lefthook/husky) in CI validation stage
 
 ## Referenced Agents
+
 - None currently (CI/CD is infrastructure managed by quality-verification and build-distribution domains)
 
 ## Referenced Skills
+
 - **cicd-pipeline-standards**: Multi-stage architecture (Validate → Build → Test → Deploy). Multi-platform testing. Artifact management. Task command usage. BUILD_PROFILE=ci configuration. Pre-commit hook integration.
 
 ## Referenced Rules
+
 - **continuous-integration-coverage**: CI split by domain, linting/formatting checks, test matrix, OS matrix, artifact generation, quality gates, distribution validation, version-gated releases
 - **task-automation-workflow**: Taskfile.yaml primary interface for CI workflows
 
 ## Interaction Points
+
 - **Receives from**: build-distribution domain (build artifacts), quality-verification domain (test requirements)
 - **Provides to**: users and developers (published packages, CI status, release artifacts)
 - **Coordinates with**: quality-verification for test execution, build-distribution for artifact publishing
 
 ## Critical Files This Domain Manages
+
 - `.github/workflows/ci-rust.yaml` (Rust core CI)
 - `.github/workflows/ci-python.yaml` (Python bindings CI)
 - `.github/workflows/ci-node.yaml` (TypeScript/Node.js CI)

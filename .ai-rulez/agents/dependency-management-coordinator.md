@@ -1,8 +1,6 @@
----
-name: dependency-management-coordinator
-description: Cross-ecosystem dependency management
-model: haiku
----
+______________________________________________________________________
+
+## name: dependency-management-coordinator description: Cross-ecosystem dependency management model: haiku
 
 # dependency-management-coordinator
 

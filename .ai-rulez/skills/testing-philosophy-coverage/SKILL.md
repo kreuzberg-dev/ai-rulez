@@ -1,6 +1,6 @@
----
-priority: critical
----
+______________________________________________________________________
+
+## priority: critical
 
 # Testing Philosophy & Coverage
 
@@ -10,11 +10,11 @@ priority: critical
 
 **Rust**: cargo test, #[tokio::test], 95% coverage (tarpaulin), test error paths, edge cases, no panics
 
-**Python**: Function-based tests only (*_test.py), pytest fixtures, 95% coverage. Structure: tests/{core,features,integration,interfaces,extractors,ocr,utils,e2e}. Test async+sync, error paths. Naming: test_<function>_<scenario>_<outcome>. NEVER mock anyio/asyncio, prefer real objects (tmp_path).
+**Python**: Function-based tests only (\*_test.py), pytest fixtures, 95% coverage. Structure: tests/{core,features,integration,interfaces,extractors,ocr,utils,e2e}. Test async+sync, error paths. Naming: test_<function>_<scenario>_<outcome>. NEVER mock anyio/asyncio, prefer real objects (tmp_path).
 
 **TypeScript**: .spec.ts next to source files, vitest, 80%+ coverage
 
-**Go**: *_test.go with _test package suffix (black-box), table-driven with t.Run(), 80%+ business logic, go test -race
+**Go**: \*\_test.go with \_test package suffix (black-box), table-driven with t.Run(), 80%+ business logic, go test -race
 
 **Ruby**: RSpec, describe/context/it blocks, 80%+ coverage
 

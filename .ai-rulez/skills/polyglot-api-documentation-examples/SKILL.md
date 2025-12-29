@@ -1,6 +1,6 @@
----
-priority: high
----
+______________________________________________________________________
+
+## priority: high
 
 # Polyglot API Documentation Examples
 
@@ -16,7 +16,7 @@ priority: high
 | **Ruby** | YARD | HTML, Markdown, tags | `.rb` | @param/@return/@example, @overload support |
 | **PHP** | PHPDocumentor | HTML, PDF | `.php` | @param/@return/@throws, markdown descriptions |
 | **Java** | Javadoc | HTML | `.java` | @param/@return/@throws/@since/@deprecated tags |
-| **Go** | godoc | HTML, plaintext | `.go` | doc.go files, package-level docs, examples in _test.go |
+| **Go** | godoc | HTML, plaintext | `.go` | doc.go files, package-level docs, examples in \_test.go |
 | **C#** | DocFX | HTML, Markdown | `.cs` | XML doc comments, xref links, TOC generation |
 | **Elixir** | ExDoc | HTML, EPUB | `.ex` | Markdown, @doc/@spec, @deprecated, live examples |
 | **WebAssembly** | wasm-doc | Markdown, HTML | `.wasm` / `.js` | JSDoc for JS wrapper, inline comments |
@@ -26,20 +26,20 @@ priority: high
 Every public API must include:
 
 1. **Summary**: One-line description of what the function/method does
-2. **Description**: Detailed explanation of behavior, edge cases, preconditions
-3. **Parameters**: Type, description, constraints, default values
-4. **Return Value**: Type, description, possible error states
-5. **Examples**: Minimal working code in ALL 10 languages
-6. **Related APIs**: Cross-references to related functions
-7. **Error Cases**: Common errors and how to handle them
-8. **Performance Notes**: Complexity, memory usage, when applicable
-9. **Deprecation Status**: If applicable, mention alternatives
+1. **Description**: Detailed explanation of behavior, edge cases, preconditions
+1. **Parameters**: Type, description, constraints, default values
+1. **Return Value**: Type, description, possible error states
+1. **Examples**: Minimal working code in ALL 10 languages
+1. **Related APIs**: Cross-references to related functions
+1. **Error Cases**: Common errors and how to handle them
+1. **Performance Notes**: Complexity, memory usage, when applicable
+1. **Deprecation Status**: If applicable, mention alternatives
 
 ## Language-Specific Documentation Patterns
 
 ### Rust (rustdoc)
 
-```rust
+````rust
 /// Processes HTML and converts it to Markdown.
 ///
 /// Takes HTML input and converts it to semantically equivalent Markdown,
@@ -73,11 +73,11 @@ Every public API must include:
 pub fn convert(html: &str, options: &Options) -> Result<String, Error> {
     // implementation
 }
-```
+````
 
 **Documentation tools**: cargo doc, rustdoc with mdBook for guides
 
----
+______________________________________________________________________
 
 ### Python (Sphinx + Google Style)
 
@@ -129,11 +129,11 @@ def convert_html_to_markdown(
 
 **Documentation tools**: Sphinx, autodoc, napoleon extension for Google style
 
----
+______________________________________________________________________
 
 ### TypeScript (JSDoc + TypeDoc)
 
-```typescript
+````typescript
 /**
  * Converts HTML to Markdown with complete semantic preservation.
  *
@@ -179,11 +179,11 @@ export async function convertHtmlToMarkdown(
 ): Promise<string> {
   // implementation
 }
-```
+````
 
 **Documentation tools**: TypeDoc, JSDoc, TypeScript compiler, markdown output
 
----
+______________________________________________________________________
 
 ### Ruby (YARD)
 
@@ -227,11 +227,11 @@ end
 
 **Documentation tools**: YARD, yard-doc gem, markdown support with kramdown
 
----
+______________________________________________________________________
 
 ### PHP (PHPDocumentor)
 
-```php
+````php
 /**
  * Converts HTML to Markdown with complete semantic preservation.
  *
@@ -274,11 +274,11 @@ public static function convertHtmlToMarkdown(
 ): string {
     // implementation
 }
-```
+````
 
 **Documentation tools**: PHPDocumentor, phpdoc tags, markdown in descriptions
 
----
+______________________________________________________________________
 
 ### Java (Javadoc)
 
@@ -331,7 +331,7 @@ public static String convertToMarkdown(
 
 **Documentation tools**: Javadoc, Maven site plugin, HTML/Markdown output
 
----
+______________________________________________________________________
 
 ### Go (godoc)
 
@@ -385,7 +385,7 @@ func ConvertHTMLToMarkdown(html string, options *ConversionOptions) (string, err
 
 **Documentation tools**: godoc, go doc, markdown in comments
 
----
+______________________________________________________________________
 
 ### C# (XML Documentation)
 
@@ -458,7 +458,7 @@ public static string ConvertToMarkdown(
 
 **Documentation tools**: DocFX, Sandcastle Help File Builder, XML to Markdown conversion
 
----
+______________________________________________________________________
 
 ### Elixir (ExDoc)
 
@@ -522,7 +522,7 @@ end
 
 **Documentation tools**: ExDoc, markdown with code blocks, @spec annotations
 
----
+______________________________________________________________________
 
 ### WebAssembly (JSDoc wrapper)
 
@@ -573,7 +573,7 @@ async function convertHtmlToMarkdown(html, options = {}) {
 
 **Documentation tools**: JSDoc, TypeDoc for TypeScript wrapper, markdown generation
 
----
+______________________________________________________________________
 
 ## API Documentation Parity Checklist
 
@@ -593,9 +593,10 @@ When documenting a new API, ensure ALL language bindings include:
 ## Migration Guide: Adding Documentation to Existing APIs
 
 ### Step 1: Document Rust Core First
+
 Start with the Rust implementation since all bindings depend on it:
 
-```rust
+````rust
 /// New public API function.
 ///
 /// # Examples
@@ -606,22 +607,24 @@ Start with the Rust implementation since all bindings depend on it:
 pub fn new_function(param: Type) -> Result<Output, Error> {
     // implementation
 }
-```
+````
 
 ### Step 2: Update All Language Bindings
+
 For each language binding, add equivalent documentation:
 
 1. **Python**: Add docstring following Google style
-2. **TypeScript**: Add JSDoc with @param/@returns/@example
-3. **Ruby**: Add YARD documentation
-4. **PHP**: Add PHPDocumentor comments
-5. **Java**: Add Javadoc comments
-6. **Go**: Add godoc comments
-7. **C#**: Add XML documentation
-8. **Elixir**: Add @doc and @spec annotations
-9. **WASM**: Add JSDoc to wrapper function
+1. **TypeScript**: Add JSDoc with @param/@returns/@example
+1. **Ruby**: Add YARD documentation
+1. **PHP**: Add PHPDocumentor comments
+1. **Java**: Add Javadoc comments
+1. **Go**: Add godoc comments
+1. **C#**: Add XML documentation
+1. **Elixir**: Add @doc and @spec annotations
+1. **WASM**: Add JSDoc to wrapper function
 
 ### Step 3: Add Examples in docs/snippets/
+
 Create language-specific examples:
 
 ```
@@ -639,6 +642,7 @@ docs/snippets/
 ```
 
 ### Step 4: Build and Verify Documentation
+
 For each language, generate and verify documentation builds:
 
 ```bash
@@ -659,12 +663,14 @@ task doc:wasm      # jsdoc
 ALL error documentation must be language-specific:
 
 ### Rust
+
 ```rust
 /// # Errors
 /// Returns `Error::InvalidInput` if preconditions not met.
 ```
 
 ### Python
+
 ```python
 """
 Raises:
@@ -673,6 +679,7 @@ Raises:
 ```
 
 ### TypeScript
+
 ```typescript
 /**
  * @throws {InvalidInputError} If input is invalid.
@@ -680,11 +687,13 @@ Raises:
 ```
 
 ### Ruby
+
 ```ruby
 # @raise [InvalidInputError] if input is invalid
 ```
 
 ### PHP
+
 ```php
 /**
  * @throws InvalidInputException If input is invalid
@@ -692,6 +701,7 @@ Raises:
 ```
 
 ### Java
+
 ```java
 /**
  * @throws IllegalArgumentException if input is invalid
@@ -699,16 +709,19 @@ Raises:
 ```
 
 ### Go
+
 ```go
 // Returns error if input is invalid.
 ```
 
-### C#
+### C\#
+
 ```csharp
 /// <exception cref="ArgumentException">Thrown if input is invalid.</exception>
 ```
 
 ### Elixir
+
 ```elixir
 """
 Raises:
@@ -775,12 +788,12 @@ echo "✓ Documentation verification complete"
 ## Best Practices
 
 1. **Keep examples concise**: 5-15 lines max per example
-2. **Use realistic scenarios**: Examples should match actual usage patterns
-3. **Include error handling**: Show how to handle common errors in each language
-4. **Test all code examples**: Run examples as part of CI/CD
-5. **Update all languages together**: When API changes, update docs for all 10 languages simultaneously
-6. **Cross-reference consistently**: Use language-native cross-reference syntax
-7. **Document performance**: Include time/space complexity and practical benchmarks
-8. **Version your docs**: Track API changes and deprecations in documentation
-9. **Automate generation**: Use doc generators to reduce manual maintenance burden
-10. **Maintain consistency**: Follow the patterns in this guide across all public APIs
+1. **Use realistic scenarios**: Examples should match actual usage patterns
+1. **Include error handling**: Show how to handle common errors in each language
+1. **Test all code examples**: Run examples as part of CI/CD
+1. **Update all languages together**: When API changes, update docs for all 10 languages simultaneously
+1. **Cross-reference consistently**: Use language-native cross-reference syntax
+1. **Document performance**: Include time/space complexity and practical benchmarks
+1. **Version your docs**: Track API changes and deprecations in documentation
+1. **Automate generation**: Use doc generators to reduce manual maintenance burden
+1. **Maintain consistency**: Follow the patterns in this guide across all public APIs

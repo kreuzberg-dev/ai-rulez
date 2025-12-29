@@ -1,6 +1,6 @@
----
-priority: critical
----
+______________________________________________________________________
+
+## priority: critical
 
 # CI/CD Pipeline Standards
 
@@ -11,6 +11,7 @@ priority: critical
 **Artifact Management**: Cache dependencies (Cargo, npm, Maven, Go modules). Publish packages (PyPI/npm/crates.io/Maven Central).
 
 **CI Workflows Use Task Commands**:
+
 - Workflows now ALWAYS use `task` commands, never direct script calls
 - All CI workflows automatically set `BUILD_PROFILE=ci`
 - Example workflow structure:
@@ -28,6 +29,7 @@ priority: critical
   ```
 
 **BUILD_PROFILE in CI**: Always set `BUILD_PROFILE=ci` in GitHub Actions workflows:
+
 - Provides release-optimized binaries
 - Includes debug symbols for troubleshooting
 - Consistent with local development workflow

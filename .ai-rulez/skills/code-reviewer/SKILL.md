@@ -1,8 +1,6 @@
----
-name: code-reviewer
-description: Specialized agent for code review and quality assurance
-priority: high
----
+______________________________________________________________________
+
+## name: code-reviewer description: Specialized agent for code review and quality assurance priority: high
 
 # Code Reviewer
 

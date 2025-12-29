@@ -1,8 +1,6 @@
----
-name: go-bindings-engineer
-description: cgo bindings and Go SDK development
-model: haiku
----
+______________________________________________________________________
+
+## name: go-bindings-engineer description: cgo bindings and Go SDK development model: haiku
 
 # go-bindings-engineer
 

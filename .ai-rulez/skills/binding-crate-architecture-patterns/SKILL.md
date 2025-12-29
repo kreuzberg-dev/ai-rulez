@@ -1,17 +1,18 @@
----
-priority: high
----
+______________________________________________________________________
+
+## priority: high
 
 # Binding Crate Architecture Patterns
 
 ## Overview
 
 Binding crates expose Rust libraries to host languages. Each binding framework has distinct patterns, but shared principles apply across all:
+
 1. **Minimal wrapper layer**: Call Rust → host language is glue only
-2. **Type translation**: Convert host language ↔ Rust with clear mapping
-3. **Error conversion**: Rust errors → native exceptions/error types
-4. **Memory safety**: Respect language-specific ownership models
-5. **Testing**: Language-native test suite, not just Rust tests
+1. **Type translation**: Convert host language ↔ Rust with clear mapping
+1. **Error conversion**: Rust errors → native exceptions/error types
+1. **Memory safety**: Respect language-specific ownership models
+1. **Testing**: Language-native test suite, not just Rust tests
 
 ## Crate Naming Conventions
 
@@ -27,6 +28,7 @@ html-to-markdown-ffi       # C FFI → Go, Java, C#
 ```
 
 **In Cargo.toml**:
+
 ```toml
 [package]
 name = "html-to-markdown-py"
@@ -37,6 +39,7 @@ description = "Python bindings for HTML to Markdown conversion"
 ## PyO3 Pattern (Python)
 
 **Directory structure**:
+
 ```
 crates/html-to-markdown-py/
 ├── src/
@@ -51,6 +54,7 @@ crates/html-to-markdown-py/
 ```
 
 **lib.rs pattern**:
+
 ```rust
 use pyo3::prelude::*;
 use html_to_markdown::HtmlConverter as RustConverter;
@@ -84,6 +88,7 @@ fn html_to_markdown(py: Python, m: &PyModule) -> PyResult<()> {
 ```
 
 **Error conversion**:
+
 ```rust
 use pyo3::exceptions::{PyException, PyValueError};
 
@@ -102,6 +107,7 @@ fn to_py_error(err: html_to_markdown::Error) -> PyErr {
 ## NAPI-RS Pattern (Node.js/TypeScript)
 
 **Directory structure**:
+
 ```
 crates/html-to-markdown-node/
 ├── src/
@@ -115,6 +121,7 @@ crates/html-to-markdown-node/
 ```
 
 **lib.rs pattern**:
+
 ```rust
 use napi::{
     bindgen_prelude::*,
@@ -171,6 +178,7 @@ impl HtmlConverter {
 ```
 
 **Type definitions** (index.d.ts):
+
 ```typescript
 export class HtmlConverter {
   constructor();
@@ -182,6 +190,7 @@ export class HtmlConverter {
 ## Magnus Pattern (Ruby)
 
 **Directory structure**:
+
 ```
 crates/html-to-markdown-rb/
 ├── src/
@@ -193,6 +202,7 @@ crates/html-to-markdown-rb/
 ```
 
 **lib.rs pattern**:
+
 ```rust
 use magnus::{define_class, method, prelude::*};
 
@@ -230,6 +240,7 @@ pub fn init() -> magnus::Result<()> {
 ## ext-php-rs Pattern (PHP)
 
 **Directory structure**:
+
 ```
 crates/html-to-markdown-php/
 ├── src/
@@ -241,6 +252,7 @@ crates/html-to-markdown-php/
 ```
 
 **lib.rs pattern**:
+
 ```rust
 use ext_php_rs::prelude::*;
 
@@ -283,6 +295,7 @@ name = "html-to-markdown-ffi"
 ```
 
 **cbindgen.toml**:
+
 ```toml
 language = "C"
 header = "/* html-to-markdown FFI */"
@@ -291,6 +304,7 @@ namespace = "htm2md"
 ```
 
 **lib.rs pattern**:
+
 ```rust
 // SAFETY: All FFI functions must be explicitly safe
 // Document ownership and lifetime expectations
@@ -362,6 +376,7 @@ pub unsafe extern "C" fn htm2md_free_string(ptr: *mut c_char) {
 ## wasm-bindgen Pattern (WebAssembly)
 
 **lib.rs pattern**:
+
 ```rust
 use wasm_bindgen::prelude::*;
 
@@ -424,6 +439,7 @@ impl From<html_to_markdown::Error> for PyErr {
 ## Anti-Patterns to Avoid
 
 1. **Exposing Rust internals**:
+
    ```rust
    // BAD: Users see Rust implementation details
    pub struct Converter(html_to_markdown::HtmlConverter);
@@ -433,7 +449,8 @@ impl From<html_to_markdown::Error> for PyErr {
    pub struct Converter { inner: ... }
    ```
 
-2. **Synchronous blocking in async contexts**:
+1. **Synchronous blocking in async contexts**:
+
    ```rust
    // BAD: Blocks Tokio runtime
    async fn convert_async(&self, html: String) -> Result<String> {
@@ -448,7 +465,8 @@ impl From<html_to_markdown::Error> for PyErr {
    }
    ```
 
-3. **Memory ownership confusion**:
+1. **Memory ownership confusion**:
+
    ```rust
    // BAD: Dangling pointers in FFI
    pub unsafe extern "C" fn get_string() -> *const c_char {
@@ -462,7 +480,8 @@ impl From<html_to_markdown::Error> for PyErr {
    }
    ```
 
-4. **Missing error handling**:
+1. **Missing error handling**:
+
    ```rust
    // BAD: Panics in FFI code
    pub fn convert(html: &str) -> String {
@@ -476,6 +495,7 @@ impl From<html_to_markdown::Error> for PyErr {
    ```
 
 ## Cross-references to Related Skills
+
 - **ffi-and-language-interop-standards**: Memory safety, pointer handling
 - **workspace-dependency-management**: Coordinating binding crates with core
 - **polyglot-bindings**: Framework for all language bindings

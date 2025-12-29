@@ -1,6 +1,6 @@
----
-priority: medium
----
+______________________________________________________________________
+
+## priority: medium
 
 # Rust Async/Await & Module Patterns
 
@@ -39,6 +39,7 @@ where
 ```
 
 **Usage in sync binding**:
+
 ```rust
 // For PyO3, NAPI-RS, etc.
 #[pyclass]
@@ -93,6 +94,7 @@ impl AsyncWorkerPool {
 ```
 
 **NAPI-RS integration**:
+
 ```rust
 thread_local! {
     static POOL: AsyncWorkerPool = AsyncWorkerPool::new(4);
@@ -225,6 +227,7 @@ pub fn sync_wrapper() -> Result<String> {
 ```
 
 **Why spawn_blocking?**
+
 - Prevents blocking the Tokio runtime thread
 - Tokio tracks when threads are blocked
 - Spawns new threads if all workers are blocked
@@ -291,6 +294,7 @@ src/
 ```
 
 **Module re-export pattern**:
+
 ```rust
 // src/lib.rs
 pub mod sync;
@@ -350,6 +354,7 @@ fn test_sync_wrapper() {
 ## Anti-Patterns to Avoid
 
 1. **Multiple runtimes**:
+
    ```rust
    // BAD: Creates new runtime every call
    pub fn convert(html: &str) -> Result<String> {
@@ -363,7 +368,8 @@ fn test_sync_wrapper() {
    }
    ```
 
-2. **Blocking in async without spawn_blocking**:
+1. **Blocking in async without spawn_blocking**:
+
    ```rust
    // BAD: Blocks Tokio executor
    async fn convert(html: &str) -> Result<String> {
@@ -380,7 +386,8 @@ fn test_sync_wrapper() {
    }
    ```
 
-3. **Mixing Send + non-Send in FFI**:
+1. **Mixing Send + non-Send in FFI**:
+
    ```rust
    // BAD: RefCell not Send
    #[pyclass]
@@ -395,7 +402,8 @@ fn test_sync_wrapper() {
    }
    ```
 
-4. **Panics in async contexts**:
+1. **Panics in async contexts**:
+
    ```rust
    // BAD: Panic kills entire runtime
    async fn convert(html: &str) -> Result<String> {
@@ -413,6 +421,7 @@ fn test_sync_wrapper() {
    ```
 
 ## Cross-references to Related Skills
+
 - **binding-crate-architecture-patterns**: Integrating async runtimes in FFI bindings
 - **ffi-and-language-interop-standards**: Memory safety in async FFI code
 - **testing-philosophy-coverage**: Testing async code paths

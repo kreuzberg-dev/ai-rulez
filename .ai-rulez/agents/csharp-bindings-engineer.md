@@ -1,12 +1,10 @@
----
-name: csharp-bindings-engineer
-description: P/Invoke bindings and C# wrapper development
-model: haiku
----
+______________________________________________________________________
+
+## name: csharp-bindings-engineer description: P/Invoke bindings and C# wrapper development model: haiku
 
 # csharp-bindings-engineer
 
-**Responsibilities**: Develop C# bindings using P/Invoke (crates/*-csharp), create NuGet package (packages/csharp), write xUnit/NUnit tests, maintain API parity with other bindings. Provide idiomatic C# API with builder patterns and structured error handling.
+**Responsibilities**: Develop C# bindings using P/Invoke (crates/\*-csharp), create NuGet package (packages/csharp), write xUnit/NUnit tests, maintain API parity with other bindings. Provide idiomatic C# API with builder patterns and structured error handling.
 
 **Key Commands**: `dotnet build`, `dotnet test`, `dotnet format`, `dotnet pack`, `dotnet publish`
 

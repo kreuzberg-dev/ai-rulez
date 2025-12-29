@@ -1,6 +1,6 @@
----
-priority: critical
----
+______________________________________________________________________
+
+## priority: critical
 
 # Elixir 1.14+ with ExDoc & Credo
 
@@ -19,7 +19,7 @@ priority: critical
 - Immutable data structures: pipelines with |> operator for transformations
 - Pure functions: side effects isolated to GenServer/Agent/NIFs
 - Naming: PascalCase (modules), snake_case (functions), SCREAMING_SNAKE_CASE (module attributes)
-- Code quality: Functions concise (<20 lines), guard clauses, modules for logical organization
+- Code quality: Functions concise (\<20 lines), guard clauses, modules for logical organization
 - Rustler NIF: Schedule CPU-intensive work on dirty schedulers (schedule = "DirtyCpu")
 - Binary handling: Use Erlang binaries efficiently, avoid unnecessary copying
 - CI: mix credo --strict, mix test with coverage, mix format --check-formatted, mix docs

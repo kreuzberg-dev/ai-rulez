@@ -1,8 +1,6 @@
----
-name: polyglot-architect
-description: System design and multi-language architecture decisions
-model: sonnet
----
+______________________________________________________________________
+
+## name: polyglot-architect description: System design and multi-language architecture decisions model: sonnet
 
 # polyglot-architect
 

@@ -1,6 +1,6 @@
----
-priority: high
----
+______________________________________________________________________
+
+## priority: high
 
 # Performance & Benchmarking Standards
 
@@ -32,6 +32,7 @@ priority: high
 ## Code Examples
 
 ### Criterion Benchmark
+
 ```rust
 use criterion::{black_box, criterion_group, criterion_main, Criterion};
 
@@ -49,6 +50,7 @@ criterion_main!(benches);
 ```
 
 ### Zero-Copy Pattern
+
 ```rust
 // GOOD: Use Cow for conditional ownership
 fn process_data(input: &[u8]) -> Cow<'_, [u8]> {
@@ -67,6 +69,7 @@ let clone2 = Arc::clone(&data);
 ```
 
 ### Buffer Reuse Pattern
+
 ```rust
 struct Parser {
     buffer: Vec<u8>,

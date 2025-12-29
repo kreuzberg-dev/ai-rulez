@@ -1,14 +1,16 @@
----
-priority: critical
----
+______________________________________________________________________
+
+## priority: critical
 
 # Common Task Commands
 
 **Setup & Installation**:
+
 - `task setup`: Install all dependencies (Rust, Python, Node, Go, Java, Ruby, etc.)
 - `task setup-pre-commit`: Configure pre-commit hooks
 
 **Build Commands**:
+
 - `task build`: Build all (respects BUILD_PROFILE)
 - `task build:all`: Build all languages
 - `task build:all:dev`: Build all in debug mode
@@ -25,6 +27,7 @@ priority: critical
 - `task wasm:build`: Build WebAssembly bindings
 
 **Test Commands**:
+
 - `task test`: Run tests (respects BUILD_PROFILE)
 - `task test:all`: Run all tests across all languages
 - `task test:all:fast`: Run fast tests (skip slow integration tests)
@@ -38,6 +41,7 @@ priority: critical
 - `task e2e:all`: Run all E2E tests across all languages
 
 **Linting & Formatting**:
+
 - `task lint`: Lint current project
 - `task lint:all`: Lint all languages
 - `task lint:check`: CI linting (for GitHub Actions, fails on issues)
@@ -51,6 +55,7 @@ priority: critical
 - `task node:format`: Format TypeScript (biome)
 
 **Utilities**:
+
 - `task clean`: Clean build artifacts
 - `task version:sync`: Sync version from Cargo.toml to all manifests (package.json, pyproject.toml, pom.xml, go.mod, Gemfile, etc.)
 - `task pre-commit`: Run pre-commit hooks manually

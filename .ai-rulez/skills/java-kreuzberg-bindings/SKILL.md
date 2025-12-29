@@ -1,6 +1,6 @@
----
-priority: high
----
+______________________________________________________________________
+
+## priority: high
 
 # Java Kreuzberg Bindings
 
@@ -16,6 +16,6 @@ priority: high
 
 **Critical**: Core logic lives in Rust. Java only for FFI bindings/wrappers. If core logic needed, coordinate with rust-engineer.
 
-**Key files**: Kreuzberg.java (high-level API), KreuzbergFFI.java (FFI bindings), config/* (builder pattern), KreuzbergException.java (exception hierarchy).
+**Key files**: Kreuzberg.java (high-level API), KreuzbergFFI.java (FFI bindings), config/\* (builder pattern), KreuzbergException.java (exception hierarchy).
 
 **Code quality**: Zero Checkstyle/PMD warnings, use mvn checkstyle:check and mvn spotless:apply.

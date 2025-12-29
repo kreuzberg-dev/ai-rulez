@@ -1,6 +1,6 @@
----
-priority: critical
----
+______________________________________________________________________
+
+## priority: critical
 
 # Release & Deployment Processes
 
@@ -133,6 +133,7 @@ commit_parsers = [
 ```
 
 Usage:
+
 ```bash
 git cliff --output CHANGELOG.md
 git cliff v1.0.0..v1.1.0  # Specific version range
@@ -141,6 +142,7 @@ git cliff v1.0.0..v1.1.0  # Specific version range
 ## Publishing to Registries
 
 ### Crates.io (Rust)
+
 - Requires ownership verification and token
 - Use `cargo publish` from clean workspace
 - Prevent yank of versions with active dependents
@@ -152,6 +154,7 @@ cargo publish --token $CARGO_TOKEN
 ```
 
 ### PyPI (Python)
+
 - Build via setuptools/build module
 - Use `twine` for secure uploads with API tokens
 - Separate PyPI token per project recommended
@@ -163,6 +166,7 @@ twine upload dist/* --username __token__ --password $PYPI_TOKEN
 ```
 
 ### npm (Node.js/TypeScript)
+
 - Publish from root or scoped package directory
 - Ensure package.json version matches git tag
 - Use two-factor authentication if enabled on npm account
@@ -174,6 +178,7 @@ npm info @myorg/pkg  # Verify published version
 ```
 
 ### RubyGems
+
 - Build gem via `gem build gemspec.gemspec`
 - Requires account and API key
 - Yank unsecure versions quickly if needed
@@ -184,6 +189,7 @@ gem push html-to-markdown-1.0.0.gem
 ```
 
 ### Maven Central (Java)
+
 - Requires Sonatype account and GPG key setup
 - Sign artifacts before upload
 - Use gradle-nexus-publish-plugin for automation
@@ -207,6 +213,7 @@ nexusPublishing {
 ```
 
 ### Go Module Publishing
+
 - No central registry; uses version control tags
 - Go proxy (`proxy.golang.org`) automatically caches modules
 - Tag must be on commit: `git tag v1.2.3 && git push --tags`
@@ -219,6 +226,7 @@ git push origin v1.2.3
 ```
 
 ### NuGet.org (C#/.NET)
+
 - Package via `dotnet pack`
 - Sign packages with strong name or authenticode
 - API key per package recommended
@@ -234,29 +242,34 @@ dotnet nuget push bin/Release/MyPackage.1.0.0.nupkg \
 ## Release Checklist
 
 1. **Pre-release**:
+
    - [ ] All tests passing on main
    - [ ] Code review complete
    - [ ] Security scanning clean (no high/critical CVEs)
    - [ ] Performance benchmarks stable
 
-2. **Version bump**:
+1. **Version bump**:
+
    - [ ] Update Cargo.toml version
    - [ ] Update package.json version
    - [ ] Update pyproject.toml version
    - [ ] Sync version across all language bindings
    - [ ] Commit with message: "chore: bump version to 1.2.3"
 
-3. **Changelog**:
+1. **Changelog**:
+
    - [ ] Generate via git-cliff
    - [ ] Review for accuracy and completeness
    - [ ] Add to CHANGELOG.md
 
-4. **Git tag**:
+1. **Git tag**:
+
    - [ ] Create annotated tag: `git tag -a v1.2.3 -m "Release 1.2.3"`
    - [ ] Sign tag: `git tag -s v1.2.3 -m "Release 1.2.3"` (requires GPG)
    - [ ] Push: `git push origin v1.2.3`
 
-5. **Registry publishing**:
+1. **Registry publishing**:
+
    - [ ] Publish to crates.io
    - [ ] Publish to PyPI
    - [ ] Publish to npm
@@ -264,7 +277,8 @@ dotnet nuget push bin/Release/MyPackage.1.0.0.nupkg \
    - [ ] Publish to Maven Central
    - [ ] Create GitHub Release with artifacts
 
-6. **Post-release**:
+1. **Post-release**:
+
    - [ ] Verify installations work: `pip install`, `npm install`, `cargo add`
    - [ ] Update documentation with version
    - [ ] Announce release in issue/discussion

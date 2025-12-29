@@ -1,12 +1,10 @@
----
-name: elixir-bindings-engineer
-description: Elixir bindings with Rustler NIF
-model: haiku
----
+______________________________________________________________________
+
+## name: elixir-bindings-engineer description: Elixir bindings with Rustler NIF model: haiku
 
 # elixir-bindings-engineer
 
-**Responsibilities**: Develop Elixir bindings using Rustler NIF (crates/*-elixir), create Mix project (packages/elixir), write ExUnit tests, maintain API parity with other bindings. Provide idiomatic functional API with pattern matching.
+**Responsibilities**: Develop Elixir bindings using Rustler NIF (crates/\*-elixir), create Mix project (packages/elixir), write ExUnit tests, maintain API parity with other bindings. Provide idiomatic functional API with pattern matching.
 
 **Key Commands**: `mix compile`, `mix test`, `mix format`, `mix credo`, `mix docs`
 

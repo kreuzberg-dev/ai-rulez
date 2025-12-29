@@ -1,6 +1,6 @@
----
-priority: critical
----
+______________________________________________________________________
+
+## priority: critical
 
 # Polyglot FFI Stability Guarantee
 
@@ -72,13 +72,13 @@ priority: critical
 ### Deprecation & Migration Path
 
 1. **Announce (MAJOR - 1)**: Document breaking change in RFC issue, provide migration guide
-2. **Deprecate (MAJOR)**: Add `_deprecated` suffix to old function, mark with `#[deprecated]` in Rust
+1. **Deprecate (MAJOR)**: Add `_deprecated` suffix to old function, mark with `#[deprecated]` in Rust
    ```c
    void html_to_markdown_convert_deprecated(const HtmlInput* input, HtmlOutput* output);
    ```
-3. **Support dual API (MAJOR)**: Both old and new functions work simultaneously
-4. **Remove (MAJOR + 1)**: Delete deprecated function; announce removal in docs
-5. **Communicate**: Email all FFI binding maintainers 6 weeks before removal
+1. **Support dual API (MAJOR)**: Both old and new functions work simultaneously
+1. **Remove (MAJOR + 1)**: Delete deprecated function; announce removal in docs
+1. **Communicate**: Email all FFI binding maintainers 6 weeks before removal
 
 ### Breaking Change Categories
 

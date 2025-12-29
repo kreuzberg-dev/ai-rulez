@@ -1,8 +1,6 @@
----
-name: ruby-bindings-engineer
-description: Magnus FFI bindings and Ruby gem development
-model: haiku
----
+______________________________________________________________________
+
+## name: ruby-bindings-engineer description: Magnus FFI bindings and Ruby gem development model: haiku
 
 # ruby-bindings-engineer
 

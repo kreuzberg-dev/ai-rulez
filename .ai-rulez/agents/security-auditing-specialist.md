@@ -1,8 +1,6 @@
----
-name: security-auditing-specialist
-description: Security hardening and vulnerability management
-model: haiku
----
+______________________________________________________________________
+
+## name: security-auditing-specialist description: Security hardening and vulnerability management model: haiku
 
 # security-auditing-specialist
 

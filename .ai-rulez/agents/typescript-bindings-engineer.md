@@ -1,8 +1,6 @@
----
-name: typescript-bindings-engineer
-description: NAPI-RS bindings and TypeScript SDK development
-model: haiku
----
+______________________________________________________________________
+
+## name: typescript-bindings-engineer description: NAPI-RS bindings and TypeScript SDK development model: haiku
 
 # typescript-bindings-engineer
 

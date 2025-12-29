@@ -1,10 +1,11 @@
----
-priority: medium
----
+______________________________________________________________________
+
+## priority: medium
 
 # Rust Core Architecture
 
 ## Core Conversion Engine
+
 - **Library crate**: crates/html-to-markdown/ implements HTML→Markdown conversion
 - **Parser**: html5ever for robust HTML5 parsing
 - **Sanitizer**: ammonia for XSS prevention and safe HTML handling
@@ -13,6 +14,7 @@ priority: medium
 - **Performance**: zero-copy where possible, streaming for large documents
 
 ## Integration Points
+
 - **PyO3 bindings**: crates/html-to-markdown-py exports Rust API to Python
 - **NAPI-RS bindings**: crates/html-to-markdown-node for Node.js/Bun
 - **Magnus bindings**: Ruby gem uses Magnus for clean FFI
@@ -21,6 +23,7 @@ priority: medium
 - **FFI library**: crates/html-to-markdown-ffi for C-compatible exports (Go, Java, C#)
 
 ## Testing Strategy
+
 - Doc tests on public types with realistic HTML examples
 - Unit tests per module (parser, sanitizer, converters)
 - Integration tests with actual HTML fixtures in crates/html-to-markdown/tests/

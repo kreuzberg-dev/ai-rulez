@@ -9,6 +9,7 @@
 Given that ai-rulez supports 10+ language bindings that all delegate to a shared Rust core, we need a robust way to verify that the API behaves consistently across all implementations.
 
 The challenge is significant:
+
 - Manual testing each binding separately is time-consuming and error-prone
 - Different test frameworks across languages make unified testing difficult
 - Edge cases might be missed in some bindings but not others
@@ -23,9 +24,9 @@ We need a mechanism that ensures API parity across all 10+ bindings while minimi
 We will implement a fixture-driven testing strategy where:
 
 1. **Shared fixtures:** Test fixtures (input data, expected outputs, error conditions) are defined in a language-neutral format (JSON/YAML)
-2. **Fixture generation:** A fixture generator reads these definitions and produces language-specific test cases
-3. **Identical test scenarios:** Every binding runs the exact same test cases, just expressed in the native test framework
-4. **Automated verification:** CI/CD automatically runs all bindings against all fixtures, ensuring API parity
+1. **Fixture generation:** A fixture generator reads these definitions and produces language-specific test cases
+1. **Identical test scenarios:** Every binding runs the exact same test cases, just expressed in the native test framework
+1. **Automated verification:** CI/CD automatically runs all bindings against all fixtures, ensuring API parity
 
 Fixtures will cover:
 
@@ -36,6 +37,7 @@ Fixtures will cover:
 - **State management:** Multi-step operations, state transitions
 
 Example fixture structure:
+
 ```yaml
 - name: "parse_simple_rule"
   description: "Parse a basic rule definition"
@@ -52,6 +54,7 @@ Example fixture structure:
 ## Consequences
 
 ### Positive
+
 - **Guaranteed API parity:** All bindings verify identical behavior against the same test suite
 - **Reduced test maintenance:** Tests are defined once, used across all bindings
 - **Comprehensive coverage:** Shared fixtures can be more thorough than language-specific tests
@@ -60,6 +63,7 @@ Example fixture structure:
 - **Scalable:** Adding new bindings is easier; they inherit the entire test suite
 
 ### Negative
+
 - **Fixture generation overhead:** Building the fixture generation infrastructure requires effort
 - **Language-specific customization:** Some tests may need language-specific assertions
 - **Fixture maintenance:** Fixtures must be kept in sync with API changes
@@ -88,10 +92,10 @@ fixtures/
 The fixture generator (written in Rust) will:
 
 1. Read fixture definitions from YAML/JSON
-2. Generate language-specific test code for each binding
-3. Support custom assertions for language-specific types
-4. Generate CI/CD test matrices
-5. Produce test reports showing parity across bindings
+1. Generate language-specific test code for each binding
+1. Support custom assertions for language-specific types
+1. Generate CI/CD test matrices
+1. Produce test reports showing parity across bindings
 
 ### Language-Specific Assertions
 

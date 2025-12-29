@@ -1,13 +1,13 @@
----
-priority: medium
----
+______________________________________________________________________
+
+## priority: medium
 
 # Rust 2024 Edition - Core Conversion Engine
 
 **Rust 2024 edition · html5ever + ammonia · clippy -D warnings · 95% coverage**
 
 - Rust 2024; cargo fmt, clippy with -D warnings (zero tolerance)
-- Result<T, E> for errors; thiserror for custom errors; NEVER .unwrap() in production
+- Result\<T, E> for errors; thiserror for custom errors; NEVER .unwrap() in production
 - Testing: 95% minimum coverage (cargo-llvm-cov), unit/integration/doc tests in crates/
 - Documentation: rustdoc on ALL public items with examples, SAFETY comments for unsafe
 - Async: Tokio 1.x exclusively, 'static constraints, proper Send+Sync bounds

@@ -1,13 +1,13 @@
----
-priority: high
----
+______________________________________________________________________
+
+## priority: high
 
 # Elixir 1.14+ - Rustler NIF Bindings
 
 **Elixir 1.14+ · OTP 25+ · Rustler NIFs · Pattern matching · ExUnit · ExDoc · 80%+ coverage**
 
 - Target Elixir 1.14+ with OTP 25+; use match/case and newer Elixir features
-- Rustler NIF bindings in crates/ (crates/*-elixir) provide safe FFI to Rust code
+- Rustler NIF bindings in crates/ (crates/\*-elixir) provide safe FFI to Rust code
 - Mix project structure in packages/elixir; use Nif.module/1 for clean API exposure
 - Functional API patterns: leverage Elixir's pattern matching, immutability, pipe operators
 - Error handling via standard Elixir tuples: {:ok, result} | {:error, reason}
@@ -30,9 +30,10 @@ crates/my-module-elixir/
 ```
 
 **Requirements:**
+
 - Rustler dependency pinned to stable version
 - lib.rs exports #[module] with all NIF functions
-- Each NIF function returns Result<T, String> with clear error messages
+- Each NIF function returns Result\<T, String> with clear error messages
 - No panics; convert Rust errors to Elixir error tuples
 - All NIF functions must have @doc comments in wrapper module
 
@@ -54,6 +55,7 @@ packages/elixir/
 ```
 
 **Requirements:**
+
 - Credo configuration in .credo.exs; run `mix credo` before commits
 - All public functions must have @spec typespecs
 - @doc required for all public functions with usage examples
@@ -65,6 +67,7 @@ packages/elixir/
 Functional Elixir APIs leverage pattern matching:
 
 **Good:**
+
 ```elixir
 defmodule MyModule do
   @spec process(term()) :: {:ok, any()} | {:error, String.t()}
@@ -82,6 +85,7 @@ end
 ```
 
 **Anti-patterns:**
+
 - Returning raw tuples without proper typespecs
 - Silent failures (returning :ok without validating input)
 - Raising exceptions instead of returning {:error, reason}
@@ -107,9 +111,10 @@ end
 ```
 
 **Requirements:**
+
 - Never raise exceptions from NIFs; return error tuples
 - Error messages must be descriptive and actionable
-- Use pattern matching in caller code: with {:ok, x} <- nif_call(y)
+- Use pattern matching in caller code: with {:ok, x} \<- nif_call(y)
 - Validate Elixir inputs before passing to Rust
 - Document error cases in @doc strings
 
@@ -145,6 +150,7 @@ end
 ```
 
 **Requirements:**
+
 - Test both success and error paths
 - 80%+ code coverage measured with ExCoveralls
 - Use describe blocks to organize tests
@@ -160,6 +166,7 @@ mix credo --strict
 ```
 
 **Configuration in .credo.exs:**
+
 - Line length limit: 120 characters
 - Avoid unused variables: {Credo.Check.Warning.Unused, []}
 - Simplify function definitions
@@ -167,6 +174,7 @@ mix credo --strict
 - No empty function bodies without reason
 
 **Requirements:**
+
 - Run `mix credo` before pushing; fix all warnings
 - Never ignore checks with # credo:disable-for-next-line
 - Unused imports removed automatically: `mix credo --fix`
@@ -211,11 +219,12 @@ end
 ```
 
 **Requirements:**
+
 - @moduledoc on every module explaining its purpose
 - @doc on all public functions with examples
 - @spec on all public functions with proper types
 - iex examples in docs must be runnable (mix test --doc)
-- Links to related modules using Markdown [Module](`Module`)
+- Links to related modules using Markdown [Module](%60Module%60)
 
 ## Build & Compilation
 
@@ -238,6 +247,7 @@ end
 ```
 
 **Requirements:**
+
 - Rustler compiler configured before other compilers
 - Cargo.toml path points to correct crate directory
 - Build runs: `mix compile` (automatic)
@@ -261,6 +271,7 @@ end
 ```
 
 **Requirements:**
+
 - All dependencies pinned with mix.lock committed
 - Use tilde constraints: ~> X.Y for stability
 - Dev/test dependencies in only: [:dev, :test]
@@ -272,26 +283,27 @@ end
 **Never do this:**
 
 1. Raise exceptions in NIF wrapper instead of returning error tuples
-2. Pass mutable state across Elixir/Rust boundary
-3. Perform I/O in NIF functions (blocks scheduler)
-4. Skip error handling with "it won't fail"
-5. Duplicate logic in Elixir and Rust (single source of truth in Rust)
-6. Use Any types in typespecs; be explicit
-7. Test only the happy path; test error cases thoroughly
+1. Pass mutable state across Elixir/Rust boundary
+1. Perform I/O in NIF functions (blocks scheduler)
+1. Skip error handling with "it won't fail"
+1. Duplicate logic in Elixir and Rust (single source of truth in Rust)
+1. Use Any types in typespecs; be explicit
+1. Test only the happy path; test error cases thoroughly
 
 **Good alternatives:**
 
 1. Always return {:ok, value} | {:error, reason}
-2. Use Elixir processes for shared state
-3. Offload I/O to Elixir; NIFs compute only
-4. Document all failure modes in @doc
-5. Keep Elixir code thin; business logic in Rust
-6. Use union types and specific types in specs
-7. Test error conditions, edge cases, and invalid inputs
+1. Use Elixir processes for shared state
+1. Offload I/O to Elixir; NIFs compute only
+1. Document all failure modes in @doc
+1. Keep Elixir code thin; business logic in Rust
+1. Use union types and specific types in specs
+1. Test error conditions, edge cases, and invalid inputs
 
 ## Agent References
 
 For Elixir-specific binding engineering:
+
 - **elixir-bindings-engineer**: Architecture, API design, pattern matching, Rustler integration
 - **Use for**: NIF wrapper design, error handling strategies, performance optimization
 - **Reference in commits**: Consult elixir-bindings-engineer for binding architecture decisions

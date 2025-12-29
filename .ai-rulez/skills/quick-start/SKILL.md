@@ -1,10 +1,11 @@
----
-priority: medium
----
+______________________________________________________________________
+
+## priority: medium
 
 # Developer Quick Start
 
 ## Prerequisites
+
 - Rust 1.75+ (stable or nightly for WASM)
 - Python 3.10+ with uv package manager
 - Node.js 18+ with pnpm ≥10.17
@@ -17,6 +18,7 @@ priority: medium
 - prek (pre-commit hook manager)
 
 ## Quick Setup
+
 ```bash
 git clone https://github.com/kreuzberg-dev/html-to-markdown.git
 cd html-to-markdown
@@ -29,6 +31,7 @@ task pre-commit:install
 ```
 
 ## Running Tests
+
 ```bash
 # All languages
 task test
@@ -50,6 +53,7 @@ task cov:all
 ```
 
 ## Development Workflow
+
 ```bash
 # Build everything
 task build
@@ -68,7 +72,8 @@ task update
 ```
 
 ## Editing & Committing
+
 1. Edit source files (Rust, Python, TypeScript, Ruby, PHP, etc.)
-2. prek will auto-format on commit
-3. If hooks reject, fix issues and retry git commit
-4. Never use --no-verify; enforce code quality
+1. prek will auto-format on commit
+1. If hooks reject, fix issues and retry git commit
+1. Never use --no-verify; enforce code quality

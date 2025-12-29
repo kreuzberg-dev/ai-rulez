@@ -8,7 +8,7 @@
 
 Different programming languages have fundamentally different error handling models:
 
-- **Rust:** Result<T, E> with typed errors and exhaustive pattern matching
+- **Rust:** Result\<T, E> with typed errors and exhaustive pattern matching
 - **Python:** Exceptions with inheritance hierarchies
 - **JavaScript:** Exceptions, callbacks, and Promise rejections
 - **Go:** Explicit return values with error as second return
@@ -24,11 +24,12 @@ Previous attempts at polyglot libraries that tried to unify error handling acros
 Error conversion will occur at the FFI boundary, not in the Rust core. The process works as follows:
 
 1. **Rust core returns structured errors:** The Rust core returns detailed, typed error information using standard Rust error types
-2. **FFI layer receives raw error data:** The FFI boundary receives the error information from Rust
-3. **Binding converts to language idioms:** Each language binding converts the error data into the appropriate language-native error representation
-4. **Users receive familiar error patterns:** Application code receives errors in the familiar patterns of their language
+1. **FFI layer receives raw error data:** The FFI boundary receives the error information from Rust
+1. **Binding converts to language idioms:** Each language binding converts the error data into the appropriate language-native error representation
+1. **Users receive familiar error patterns:** Application code receives errors in the familiar patterns of their language
 
 For example:
+
 - Rust: `Result<Rules, ParseError>` -> Python: `raise ParseError(...)`
 - Rust: `Result<Rules, ParseError>` -> JavaScript: `reject(new ParseError(...))`
 - Rust: `Result<Rules, ParseError>` -> Go: `return nil, ParseError(...)`
@@ -36,6 +37,7 @@ For example:
 ## Consequences
 
 ### Positive
+
 - **Language-idiomatic error handling:** Users of each language work with familiar error patterns
 - **Clean Rust core:** Core logic is not polluted with language-specific error adaptation code
 - **Flexible error transformation:** Each binding can enrich errors with language-specific context
@@ -43,6 +45,7 @@ For example:
 - **Type safety in each language:** Languages with strong typing can map to their error types
 
 ### Negative
+
 - **Duplicate error definition:** Error types must be defined in both Rust and each binding
 - **Synchronization burden:** Changes to error types in Rust must be reflected in all bindings
 - **Potential inconsistencies:** If error mapping is implemented inconsistently, behaviors may diverge
@@ -63,7 +66,7 @@ We will standardize on these core error categories in Rust:
 ### Implementation Standards
 
 1. All Rust errors must include error codes and descriptions
-2. Error codes are stable across versions
-3. Bindings must implement error constructors for all error categories
-4. Error conversion functions should be reusable across multiple operations
-5. Documentation must map Rust errors to language-specific implementations
+1. Error codes are stable across versions
+1. Bindings must implement error constructors for all error categories
+1. Error conversion functions should be reusable across multiple operations
+1. Documentation must map Rust errors to language-specific implementations

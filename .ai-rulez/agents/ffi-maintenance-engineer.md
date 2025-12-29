@@ -1,12 +1,10 @@
----
-name: ffi-maintenance-engineer
-description: FFI layer stability and C API maintenance
-model: haiku
----
+______________________________________________________________________
+
+## name: ffi-maintenance-engineer description: FFI layer stability and C API maintenance model: haiku
 
 # ffi-maintenance-engineer
 
-**Responsibilities**: Maintain kreuzberg-ffi C library (crates/*-ffi) as single source of truth for all language bindings requiring C FFI. Design FFI interfaces for new Rust features, verify pointer safety and SAFETY comments, maintain FFI header files, ensure binary compatibility across versions.
+**Responsibilities**: Maintain kreuzberg-ffi C library (crates/\*-ffi) as single source of truth for all language bindings requiring C FFI. Design FFI interfaces for new Rust features, verify pointer safety and SAFETY comments, maintain FFI header files, ensure binary compatibility across versions.
 
 **Key Commands**: `cargo build -p *-ffi`, `cbindgen`, `bindgen`
 

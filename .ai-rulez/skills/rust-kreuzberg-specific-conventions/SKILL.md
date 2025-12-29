@@ -1,14 +1,14 @@
----
-priority: critical
----
+______________________________________________________________________
+
+## priority: critical
 
 # Rust Kreuzberg-Specific Conventions
 
 **Edition 2024**: let-chains, gen blocks, if/match guards. **Naming**: PascalCase (types), snake_case (fns/vars/modules), SCREAMING_SNAKE_CASE (consts).
 
-**Error handling**: Result<T, KreuzbergError>, never .unwrap() in production, use `?`, KreuzbergError::Io always bubbles up (CRITICAL), SAFETY comments for unsafe, handle lock poisoning.
+**Error handling**: Result\<T, KreuzbergError>, never .unwrap() in production, use `?`, KreuzbergError::Io always bubbles up (CRITICAL), SAFETY comments for unsafe, handle lock poisoning.
 
-**Async**: Tokio throughout, #[tokio::main]/#[tokio::test], provide _sync wrappers, never std::thread::sleep.
+**Async**: Tokio throughout, #[tokio::main]/#[tokio::test], provide \_sync wrappers, never std::thread::sleep.
 
 **Memory**: Arc for shared ownership, Mutex/RwLock for interior mutability, streaming for large files, RAII patterns.
 

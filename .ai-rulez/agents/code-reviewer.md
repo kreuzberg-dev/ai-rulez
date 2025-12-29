@@ -1,8 +1,6 @@
----
-name: code-reviewer
-description: Quality, security, and compliance review
-model: haiku
----
+______________________________________________________________________
+
+## name: code-reviewer description: Quality, security, and compliance review model: haiku
 
 # code-reviewer
 

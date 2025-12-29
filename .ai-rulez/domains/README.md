@@ -21,10 +21,13 @@ The AI-Rulez domain system organizes agents, skills, and rules into cohesive fun
 ## Core Principles
 
 ### Rust-First Architecture
+
 All extraction logic lives in the Rust core library. Language bindings are thin wrappers that expose language-idiomatic APIs without duplicating business logic.
 
 ### Domain Interactions
+
 Domains collaborate through well-defined interfaces:
+
 - **rust-core** provides the foundation for **ffi-bindings** and **language-bindings**
 - **build-distribution** orchestrates compilation across all domains
 - **quality-verification** validates outputs from all domains
@@ -33,7 +36,9 @@ Domains collaborate through well-defined interfaces:
 - **organizational** governs standards across all domains
 
 ### Agent Assignment
+
 Each domain references specific agents responsible for its scope:
+
 - Language binding engineers work within **language-bindings** domain
 - Rust core engineer works within **rust-core** domain
 - Polyglot architect coordinates across **organizational** domain
@@ -44,6 +49,7 @@ Each domain references specific agents responsible for its scope:
 ### Domain Files
 
 Each domain contains:
+
 - `DOMAIN.md` - Purpose, scope, responsibilities, interaction points
 - `agents.yaml` - Referenced agents (not duplicated, just listed)
 - `skills.yaml` - Referenced skills (not duplicated, just listed)
@@ -52,6 +58,7 @@ Each domain contains:
 ### Profiles
 
 Profiles combine domains for specific project types. See `.ai-rulez/profiles/` for:
+
 - `full-polyglot.yaml` - All domains, all languages
 - `rust-library.yaml` - Rust-only projects
 - `web-framework.yaml` - HTTP frameworks like Spikard
@@ -60,7 +67,8 @@ Profiles combine domains for specific project types. See `.ai-rulez/profiles/` f
 ## Contributing
 
 When adding new agents, skills, or rules:
+
 1. Identify which domain(s) they belong to
-2. Update the relevant domain's YAML files
-3. Update interaction points if cross-domain dependencies change
-4. Maintain the principle: rust-core is single source of truth
+1. Update the relevant domain's YAML files
+1. Update interaction points if cross-domain dependencies change
+1. Maintain the principle: rust-core is single source of truth

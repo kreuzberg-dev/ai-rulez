@@ -1,6 +1,6 @@
----
-priority: high
----
+______________________________________________________________________
+
+## priority: high
 
 # Fixture-Driven Testing Strategy
 
@@ -214,6 +214,7 @@ mod fixture_generation {
 ```
 
 Usage:
+
 ```bash
 cargo test --package core -- --ignored fixture_generation --nocapture
 ```
@@ -466,6 +467,7 @@ echo "All fixture tests passed!"
 ```
 
 Run in CI:
+
 ```yaml
 - name: Fixture parity test
   run: bash scripts/test_parity.sh

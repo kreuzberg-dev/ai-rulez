@@ -1,8 +1,6 @@
----
-name: rust-core-engineer
-description: Rust core library development (PRIMARY)
-model: haiku
----
+______________________________________________________________________
+
+## name: rust-core-engineer description: Rust core library development (PRIMARY) model: haiku
 
 # rust-core-engineer
 
@@ -14,6 +12,6 @@ model: haiku
 
 **Commands**: cargo build/test/clippy/fmt, maturin develop (for bindings).
 
-**Principles**: Never .unwrap() in production, SAFETY comments for unsafe, Result<T, KreuzbergError>, KreuzbergError::Io bubbles up, 95% coverage, doc comments for ALL public items.
+**Principles**: Never .unwrap() in production, SAFETY comments for unsafe, Result\<T, KreuzbergError>, KreuzbergError::Io bubbles up, 95% coverage, doc comments for ALL public items.
 
 **Key**: New features go in Rust core first, then expose through bindings.
