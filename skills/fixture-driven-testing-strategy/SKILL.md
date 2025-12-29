@@ -55,48 +55,48 @@ project/
   "generated_at": "2025-01-15T10:30:00Z",
   "test_cases": [
     {
-      "name": "basic_conversion",
+      "name": "basic_case",
       "input": {
-        "html": "<h1>Hello</h1><p>World</p>"
+        "data": "sample input value"
       },
       "expected_output": {
-        "markdown": "# Hello\n\nWorld"
+        "result": "expected output value"
       },
-      "description": "Simple HTML to Markdown conversion"
+      "description": "Basic processing case"
     },
     {
-      "name": "nested_lists",
+      "name": "advanced_case",
       "input": {
-        "html": "<ul><li>Item 1<ul><li>Nested</li></ul></li></ul>"
+        "data": "complex data structure"
       },
       "expected_output": {
-        "markdown": "- Item 1\n  - Nested"
-      }
-    },
-    {
-      "name": "table_conversion",
-      "input": {
-        "html": "<table><tr><th>Header</th></tr><tr><td>Data</td></tr></table>"
-      },
-      "expected_output": {
-        "markdown": "| Header |\n|--------|\n| Data   |"
+        "result": "transformed result"
       }
     },
     {
       "name": "edge_case_empty_input",
       "input": {
-        "html": ""
+        "data": ""
       },
       "expected_output": {
-        "markdown": ""
+        "result": ""
       }
     },
     {
-      "name": "error_case_invalid_html",
+      "name": "special_characters",
       "input": {
-        "html": "<div>Unclosed tag"
+        "data": "input with special chars & symbols"
       },
-      "expected_error": "malformed_html"
+      "expected_output": {
+        "result": "output with special chars & symbols"
+      }
+    },
+    {
+      "name": "error_case_invalid_input",
+      "input": {
+        "data": "malformed input"
+      },
+      "expected_error": "validation_error"
     }
   ]
 }
@@ -109,43 +109,29 @@ version: 1
 generated_at: 2025-01-15T10:30:00Z
 
 test_cases:
-  - name: basic_conversion
+  - name: basic_case
     input:
-      html: |
-        <h1>Hello</h1>
-        <p>World</p>
+      data: "sample input"
     expected_output:
-      markdown: |
-        # Hello
+      result: "expected output"
 
-        World
-
-  - name: nested_lists
+  - name: advanced_case
     input:
-      html: |
-        <ul>
-          <li>Item 1
-            <ul>
-              <li>Nested</li>
-            </ul>
-          </li>
-        </ul>
+      data: "complex input structure"
     expected_output:
-      markdown: |
-        - Item 1
-          - Nested
+      result: "transformed result"
 
   - name: special_chars
     input:
-      html: "<p>Test & verify \"quotes\"</p>"
+      data: "input with special & characters"
     expected_output:
-      markdown: "Test & verify \"quotes\""
+      result: "output with special & characters"
 
   - name: unicode_handling
     input:
-      html: "<p>Hello 世界 🌍</p>"
+      data: "Hello 世界 🌍"
     expected_output:
-      markdown: "Hello 世界 🌍"
+      result: "Hello 世界 🌍"
 ```
 
 ## Fixture Generation from Rust
@@ -154,8 +140,8 @@ Generate fixtures programmatically from Rust canonical implementation:
 
 ```rust
 // crates/core/src/lib.rs - Canonical implementation
-pub fn html_to_markdown(html: &str) -> Result<String> {
-    // Core conversion logic
+pub fn process(input: &str) -> Result<String> {
+    // Core processing logic
     // ...
 }
 
@@ -169,9 +155,9 @@ mod fixture_generation {
     #[ignore]  // Run manually with: cargo test -- --ignored --nocapture
     fn generate_fixtures() {
         let test_cases = vec![
-            ("basic_conversion", "<h1>Hello</h1><p>World</p>"),
-            ("nested_lists", "<ul><li>Item 1<ul><li>Nested</li></ul></li></ul>"),
-            ("table_conversion", "<table><tr><th>Header</th></tr><tr><td>Data</td></tr></table>"),
+            ("basic_case", "sample input 1"),
+            ("advanced_case", "sample input 2"),
+            ("edge_case", "sample input 3"),
             ("empty_input", ""),
         ];
 
@@ -183,19 +169,19 @@ mod fixture_generation {
 
         let cases = fixtures["test_cases"].as_array_mut().unwrap();
 
-        for (name, html) in test_cases {
-            match html_to_markdown(html) {
-                Ok(markdown) => {
+        for (name, input) in test_cases {
+            match process(input) {
+                Ok(output) => {
                     cases.push(json!({
                         "name": name,
-                        "input": { "html": html },
-                        "expected_output": { "markdown": markdown }
+                        "input": { "data": input },
+                        "expected_output": { "result": output }
                     }));
                 }
                 Err(e) => {
                     cases.push(json!({
                         "name": name,
-                        "input": { "html": html },
+                        "input": { "data": input },
                         "expected_error": e.to_string()
                     }));
                 }
@@ -234,20 +220,20 @@ def fixtures():
         return json.load(f)
 
 @pytest.mark.parametrize("test_case", fixtures()["test_cases"], ids=lambda tc: tc["name"])
-def test_html_to_markdown(test_case):
+def test_process(test_case):
     """Test against shared fixtures"""
-    from html_to_markdown import convert
+    from my_module import process
 
-    input_html = test_case["input"]["html"]
+    input_data = test_case["input"]["data"]
 
     if "expected_error" in test_case:
         with pytest.raises(Exception) as exc_info:
-            convert(input_html)
+            process(input_data)
         assert test_case["expected_error"] in str(exc_info.value)
     else:
-        expected_markdown = test_case["expected_output"]["markdown"]
-        actual_markdown = convert(input_html)
-        assert actual_markdown == expected_markdown
+        expected_result = test_case["expected_output"]["result"]
+        actual_result = process(input_data)
+        assert actual_result == expected_result
 
     # Display test metadata
     if "description" in test_case:
@@ -258,12 +244,12 @@ def test_html_to_markdown(test_case):
 
 ```typescript
 import * as fs from "fs";
-import { htmlToMarkdown } from "../src";
+import { process } from "../src";
 
 interface TestCase {
   name: string;
-  input: { html: string };
-  expected_output?: { markdown: string };
+  input: { data: string };
+  expected_output?: { result: string };
   expected_error?: string;
   description?: string;
 }
@@ -279,12 +265,12 @@ describe("Fixture-driven tests", () => {
   fixtures.forEach((testCase) => {
     it(`${testCase.name}: ${testCase.description || ""}`, async () => {
       if (testCase.expected_error) {
-        expect(() => htmlToMarkdown(testCase.input.html)).toThrow(
+        expect(() => process(testCase.input.data)).toThrow(
           testCase.expected_error
         );
       } else {
-        const result = htmlToMarkdown(testCase.input.html);
-        expect(result).toBe(testCase.expected_output!.markdown);
+        const result = process(testCase.input.data);
+        expect(result).toBe(testCase.expected_output!.result);
       }
     });
   });
@@ -296,24 +282,24 @@ describe("Fixture-driven tests", () => {
 ```ruby
 require 'json'
 require 'rspec'
-require 'html_to_markdown'
+require 'my_module'
 
 fixtures = JSON.parse(
   File.read(File.expand_path('../../../../crates/core/fixtures/canonical.json', __FILE__))
 )
 
-describe HtmlToMarkdown do
+describe MyModule do
   fixtures['test_cases'].each do |test_case|
     context test_case['name'] do
-      it test_case['description'] || 'converts correctly' do
-        input_html = test_case['input']['html']
+      it test_case['description'] || 'processes correctly' do
+        input_data = test_case['input']['data']
 
         if test_case['expected_error']
-          expect { HtmlToMarkdown.convert(input_html) }.to raise_error
+          expect { MyModule.process(input_data) }.to raise_error
         else
-          expected_markdown = test_case['expected_output']['markdown']
-          actual_markdown = HtmlToMarkdown.convert(input_html)
-          expect(actual_markdown).to eq(expected_markdown)
+          expected_result = test_case['expected_output']['result']
+          actual_result = MyModule.process(input_data)
+          expect(actual_result).to eq(expected_result)
         end
       end
     end
@@ -332,7 +318,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
 
-public class HtmlToMarkdownFixtureTest {
+public class ProcessFixtureTest {
 
     static class TestCase {
         String name;
@@ -342,11 +328,11 @@ public class HtmlToMarkdownFixtureTest {
     }
 
     static class Input {
-        String html;
+        String data;
     }
 
     static class Output {
-        String markdown;
+        String result;
     }
 
     static Stream<TestCase> loadFixtures() throws Exception {
@@ -365,14 +351,14 @@ public class HtmlToMarkdownFixtureTest {
 
     @ParameterizedTest(name = "{0}")
     @MethodSource("loadFixtures")
-    void testHtmlToMarkdown(TestCase testCase) {
+    void testProcess(TestCase testCase) {
         if (testCase.expected_error != null) {
             assertThrows(Exception.class, () ->
-                HtmlToMarkdown.convert(testCase.input.html)
+                MyModule.process(testCase.input.data)
             );
         } else {
-            String result = HtmlToMarkdown.convert(testCase.input.html);
-            assertEquals(testCase.expected_output.markdown, result);
+            String result = MyModule.process(testCase.input.data);
+            assertEquals(testCase.expected_output.result, result);
         }
     }
 }
@@ -387,52 +373,40 @@ Use snapshot testing for complex outputs (diffs shown in PRs):
 use insta::assert_snapshot;
 
 #[test]
-fn test_complex_html_snapshot() {
-    let html = r#"
-        <article>
-            <h1>Title</h1>
-            <section>
-                <h2>Subtitle</h2>
-                <p>Content</p>
-            </section>
-        </article>
+fn test_complex_input_snapshot() {
+    let input = r#"
+        Complex multiline
+        structured input
+        with nested data
     "#;
 
-    let result = html_to_markdown(html).unwrap();
+    let result = process(input).unwrap();
     assert_snapshot!(result);
 }
 ```
 
 ```python
 # Python with pytest-snapshot or syrupy
-def test_complex_html_snapshot(snapshot):
-    html = """
-        <article>
-            <h1>Title</h1>
-            <section>
-                <h2>Subtitle</h2>
-                <p>Content</p>
-            </section>
-        </article>
+def test_complex_input_snapshot(snapshot):
+    input_data = """
+        Complex multiline
+        structured input
+        with nested data
     """
-    result = convert(html)
+    result = process(input_data)
     assert result == snapshot
 ```
 
 ```typescript
 // TypeScript with jest snapshots
-test("complex HTML snapshot", () => {
-  const html = `
-    <article>
-        <h1>Title</h1>
-        <section>
-            <h2>Subtitle</h2>
-            <p>Content</p>
-        </section>
-    </article>
+test("complex input snapshot", () => {
+  const input = `
+    Complex multiline
+    structured input
+    with nested data
   `;
 
-  expect(htmlToMarkdown(html)).toMatchSnapshot();
+  expect(process(input)).toMatchSnapshot();
 });
 ```
 
@@ -463,13 +437,13 @@ cd bindings/ruby && bundle exec rspec spec/fixtures_spec.rb && cd ../..
 echo "Testing Java..."
 cd bindings/java && ./gradlew test --tests "*FixtureTest" && cd ../..
 
-echo "All fixture tests passed!"
+echo "All binding tests passed with consistent behavior!"
 ```
 
 Run in CI:
 
 ```yaml
-- name: Fixture parity test
+- name: Cross-language fixture parity test
   run: bash scripts/test_parity.sh
 ```
 

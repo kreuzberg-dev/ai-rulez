@@ -20,8 +20,8 @@ ______________________________________________________________________
 ## Quick Setup
 
 ```bash
-git clone https://github.com/kreuzberg-dev/html-to-markdown.git
-cd html-to-markdown
+git clone https://github.com/kreuzberg-dev/your-project.git
+cd your-project
 
 # Install all dependencies
 task setup
