@@ -1,6 +1,5 @@
 name: "Full Polyglot Library"
 description: "Complete polyglot library with Rust core and bindings for Python, TypeScript, Ruby, PHP, Java, Go, C#, Elixir, and WASM. All languages equally supported with full feature parity."
-
 domains:
   - rust-core
   - ffi-bindings
@@ -10,24 +9,22 @@ domains:
   - documentation
   - devops-infrastructure
   - organizational
-
 agents:
-  - polyglot-architect        # Sonnet: strategic decisions
-  - rust-core-engineer        # Haiku: Rust core development
-  - python-bindings-engineer  # Haiku: Python bindings
+  - polyglot-architect # Sonnet: strategic decisions
+  - rust-core-engineer # Haiku: Rust core development
+  - python-bindings-engineer # Haiku: Python bindings
   - typescript-bindings-engineer # Haiku: TypeScript/WASM
-  - ruby-bindings-engineer    # Haiku: Ruby bindings
-  - php-bindings-engineer     # Haiku: PHP bindings
-  - java-bindings-engineer    # Haiku: Java bindings
-  - go-bindings-engineer      # Haiku: Go bindings
-  - csharp-bindings-engineer  # Haiku: C# bindings
-  - elixir-bindings-engineer  # Haiku: Elixir bindings
-  - test-automation-engineer  # Haiku: E2E test generation
-  - code-reviewer             # Haiku: Multi-language review
-  - docs-writer               # Haiku: Guide authoring
-  - api-doc-writer            # Haiku: API documentation
-  - tutorial-writer           # Haiku: Language-parity tutorials
-
+  - ruby-bindings-engineer # Haiku: Ruby bindings
+  - php-bindings-engineer # Haiku: PHP bindings
+  - java-bindings-engineer # Haiku: Java bindings
+  - go-bindings-engineer # Haiku: Go bindings
+  - csharp-bindings-engineer # Haiku: C# bindings
+  - elixir-bindings-engineer # Haiku: Elixir bindings
+  - test-automation-engineer # Haiku: E2E test generation
+  - code-reviewer # Haiku: Multi-language review
+  - docs-writer # Haiku: Guide authoring
+  - api-doc-writer # Haiku: API documentation
+  - tutorial-writer # Haiku: Language-parity tutorials
 priority_rules:
   - rust-2024-edition-core-conversion-engine
   - python-310-pyo3-binding-wrappers
@@ -39,7 +36,6 @@ priority_rules:
   - continuous-integration-coverage
   - task-automation-workflow
   - code-quality
-
 model_routing:
   architecture_decisions: sonnet
   core_implementation: haiku

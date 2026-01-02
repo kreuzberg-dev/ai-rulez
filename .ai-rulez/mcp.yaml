@@ -4,10 +4,8 @@
 
 # Schema reference for IDE validation
 $schema: https://raw.githubusercontent.com/Goldziher/ai-rulez/main/schema/ai-rules-v3-mcp.schema.json
-
 # Version (required)
 version: "3.0"
-
 # MCP Servers
 mcp_servers:
   # GitHub Integration
@@ -28,7 +26,6 @@ mcp_servers:
       - PR reviews (code-reviewer agent)
       - Issue tracking
       - Release management
-
   # AI-Rulez MCP Server
   # Configuration management and project-specific settings
   # Use this for managing AI-Rulez configuration files and project metadata
@@ -43,13 +40,12 @@ mcp_servers:
       - Configuration file management
       - Project metadata updates
       - Agent configuration
-
   # Filesystem MCP Server
   # Code reading and analysis capabilities
   # Provides direct access to source code for architecture exploration and verification
   - name: filesystem
     description: Filesystem operations for code reading and analysis
-    command: null  # Built-in MCP server
+    command: null # Built-in MCP server
     enabled: true
     scope:
       - src
@@ -59,25 +55,23 @@ mcp_servers:
       - Architecture exploration
       - Binding verification
       - Code navigation and analysis
-
   # Cargo Registry MCP Server
   # Rust-specific dependency and security information
   # Essential for auditing Rust dependencies and performing security scanning
   - name: cargo-registry
     description: Rust crate registry integration for dependency information
-    command: null  # Built-in MCP server or via Cargo plugin
+    command: null # Built-in MCP server or via Cargo plugin
     enabled: true
     use_cases:
       - Dependency audits
       - Security scanning
       - Version compatibility checks
-
   # Web Search MCP Server
   # Documentation and best practices lookup
   # Use for researching FFI patterns, language bindings, and Rust ecosystem best practices
   - name: web-search
     description: Web search integration for documentation and best practices
-    command: null  # Built-in MCP server
+    command: null # Built-in MCP server
     enabled: true
     use_cases:
       - FFI patterns research

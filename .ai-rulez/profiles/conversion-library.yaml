@@ -1,6 +1,5 @@
 name: "Conversion Library (All Languages)"
 description: "Conversion/transformation tool with Rust core and bindings for all 10 languages. Suitable for html-to-markdown, document processors, and similar multi-language conversion libraries."
-
 domains:
   - rust-core
   - ffi-bindings
@@ -10,21 +9,19 @@ domains:
   - documentation
   - devops-infrastructure
   - organizational
-
 agents:
-  - polyglot-architect        # Sonnet: conversion architecture
-  - rust-core-engineer        # Haiku: conversion core
-  - python-bindings-engineer  # Haiku: Python bindings
+  - polyglot-architect # Sonnet: conversion architecture
+  - rust-core-engineer # Haiku: conversion core
+  - python-bindings-engineer # Haiku: Python bindings
   - typescript-bindings-engineer # Haiku: TypeScript/WASM
-  - ruby-bindings-engineer    # Haiku: Ruby bindings
-  - java-bindings-engineer    # Haiku: Java bindings
-  - go-bindings-engineer      # Haiku: Go bindings
-  - test-automation-engineer  # Haiku: E2E conversion tests
-  - code-reviewer             # Haiku: Multi-language quality
-  - docs-writer               # Haiku: Conversion guides
-  - api-doc-writer            # Haiku: API references
-  - tutorial-writer           # Haiku: Conversion tutorials
-
+  - ruby-bindings-engineer # Haiku: Ruby bindings
+  - java-bindings-engineer # Haiku: Java bindings
+  - go-bindings-engineer # Haiku: Go bindings
+  - test-automation-engineer # Haiku: E2E conversion tests
+  - code-reviewer # Haiku: Multi-language quality
+  - docs-writer # Haiku: Conversion guides
+  - api-doc-writer # Haiku: API references
+  - tutorial-writer # Haiku: Conversion tutorials
 priority_rules:
   - rust-2024-edition-core-conversion-engine
   - python-310-pyo3-binding-wrappers
@@ -36,7 +33,6 @@ priority_rules:
   - continuous-integration-coverage
   - task-automation-workflow
   - code-quality
-
 model_routing:
   architecture_decisions: sonnet
   core_implementation: haiku

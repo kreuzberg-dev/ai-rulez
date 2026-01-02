@@ -1,6 +1,5 @@
 name: "Extraction Library (All Languages)"
 description: "Complex document extraction library with Rust core, plugin system, and bindings for all 10 languages. Suitable for document processors like Kreuzberg with advanced extraction, OCR, and ML capabilities."
-
 domains:
   - rust-core
   - ffi-bindings
@@ -10,21 +9,19 @@ domains:
   - documentation
   - devops-infrastructure
   - organizational
-
 agents:
-  - polyglot-architect        # Sonnet: plugin system + FFI design
-  - rust-core-engineer        # Haiku: extraction core + plugins
-  - python-bindings-engineer  # Haiku: Python extraction API
+  - polyglot-architect # Sonnet: plugin system + FFI design
+  - rust-core-engineer # Haiku: extraction core + plugins
+  - python-bindings-engineer # Haiku: Python extraction API
   - typescript-bindings-engineer # Haiku: TypeScript/WASM extraction
-  - ruby-bindings-engineer    # Haiku: Ruby extraction API
-  - java-bindings-engineer    # Haiku: Java extraction API
-  - go-bindings-engineer      # Haiku: Go extraction API
-  - test-automation-engineer  # Haiku: E2E fixture-based tests
-  - code-reviewer             # Haiku: Plugin safety + FFI review
-  - docs-writer               # Haiku: Extraction guides
-  - api-doc-writer            # Haiku: Plugin API references
-  - tutorial-writer           # Haiku: Plugin development tutorials
-
+  - ruby-bindings-engineer # Haiku: Ruby extraction API
+  - java-bindings-engineer # Haiku: Java extraction API
+  - go-bindings-engineer # Haiku: Go extraction API
+  - test-automation-engineer # Haiku: E2E fixture-based tests
+  - code-reviewer # Haiku: Plugin safety + FFI review
+  - docs-writer # Haiku: Extraction guides
+  - api-doc-writer # Haiku: Plugin API references
+  - tutorial-writer # Haiku: Plugin development tutorials
 priority_rules:
   - rust-2024-edition-core-conversion-engine
   - python-310-pyo3-binding-wrappers
@@ -36,7 +33,6 @@ priority_rules:
   - continuous-integration-coverage
   - task-automation-workflow
   - code-quality
-
 model_routing:
   architecture_decisions: sonnet
   core_implementation: haiku
