@@ -500,3 +500,14 @@ impl From<html_to_markdown::Error> for PyErr {
 - **workspace-dependency-management**: Coordinating binding crates with core
 - **polyglot-bindings**: Framework for all language bindings
 - **error-handling-strategy**: Error propagation across FFI boundaries
+
+## Distribution Packages (packages/)
+
+- **python/**: PyPI package with Python wrappers + tests
+- **typescript/**: npm package with TypeScript wrappers + CLI + tests
+- **ruby/**: Ruby gem (RBS types in sig/, specs in spec/)
+- **php/**: Composer package with PHP wrappers + PHPUnit tests
+- **php-ext/**: PIE metadata for ext-php-rs distribution
+- **go/**: Go module wrapping FFI library
+- **java/**: Maven project wrapping FFI library with JNI
+- **csharp/**: .NET project wrapping FFI library with P/Invoke

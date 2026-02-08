@@ -61,3 +61,11 @@ ______________________________________________________________________
 - `task pre-commit`: Run pre-commit hooks manually
 - `task pdfium:install`: Download and install PDFium library
 - `task smoke`: Run smoke tests (quick validation)
+
+## Repository Structure & Bindings
+
+**Core**: crates/kreuzberg (Rust 2024, standalone library, Edition 2024)
+
+**Bindings**: Python (PyO3/maturin), TypeScript (NAPI-RS/pnpm), Ruby (Magnus/rake), Java (FFM API/Maven), Go (cgo/go), Elixir (Rustler/mix), C# (FFI/dotnet), PHP (FFI/composer)
+
+**E2E Generation**: `cargo run -p kreuzberg-e2e-generator -- generate --lang <rust|python|typescript|ruby|java|go|elixir>`

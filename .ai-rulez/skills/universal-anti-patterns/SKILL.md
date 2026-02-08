@@ -16,3 +16,5 @@ ______________________________________________________________________
 - Inheritance for code reuse - prefer composition
 - Global state - dependency injection
 - f-strings in logging - structured key=value logging
+- Unwrap/panic in production code (Rust) - use Result\<T, E>
+- Duplication across bindings - core logic ALWAYS in Rust

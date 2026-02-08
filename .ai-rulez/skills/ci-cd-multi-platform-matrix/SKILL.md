@@ -523,3 +523,34 @@ jobs:
 - **Hardcoded versions**: Use matrix variables for all version-dependent steps
 
 - **No architecture testing**: Test both x86_64 and ARM64 (cross-compile with `cross` crate)
+
+## CI/CD Pipeline Standards
+
+**Pipeline Stages**: Validate (lint/format) -> Build -> Test (unit/integration) -> Deploy. Quality gates: zero warnings, tests pass, coverage thresholds met.
+
+**CI Workflows Use Task Commands**:
+
+- Workflows ALWAYS use `task` commands, never direct script calls
+- All CI workflows automatically set `BUILD_PROFILE=ci`
+- Example workflow structure:
+  ```yaml
+  - name: Setup
+    run: task setup
+  - name: Lint
+    run: task lint:check
+  - name: Build
+    run: BUILD_PROFILE=ci task build:all
+  - name: Test
+    run: BUILD_PROFILE=ci task test:all
+  - name: E2E
+    run: BUILD_PROFILE=ci task e2e:all
+  ```
+
+**BUILD_PROFILE in CI**: Always set `BUILD_PROFILE=ci` in GitHub Actions workflows:
+
+- Provides release-optimized binaries
+- Includes debug symbols for troubleshooting
+- Consistent with local development workflow
+- Use `task lint:check` for CI-specific linting (fails on issues vs. warnings)
+
+**Pre-commit Hooks in CI**: GitHub Actions runs `task pre-commit` in validate stage to catch linting/formatting issues early

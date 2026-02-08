@@ -74,7 +74,7 @@ presets:
   # Codex: Legacy code completion and generation
   codex:
     models:
-      - name: "code-davinci-003"
+      - name: "gpt-4o"
         role: "implementation"
         description: "OpenAI Codex for code completion and generation"
 # ============================================================================

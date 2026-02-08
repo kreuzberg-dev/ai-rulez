@@ -19,3 +19,14 @@ ______________________________________________________________________
 **Key files**: Core.java (high-level API), CoreFFI.java (FFI bindings), config/\* (builder pattern), Exception.java (exception hierarchy).
 
 **Code quality**: Zero Checkstyle/PMD warnings, use mvn checkstyle:check and mvn spotless:apply.
+
+## Java 25 Standards & FFM API
+
+- Java 25 exclusively; FFM API for native interop, sealed classes, records, pattern matching
+- Build: Maven (pom.xml) or Gradle (build.gradle.kts); compiler release=25
+- JUnit 5: @Nested classes, @ParameterizedTest, AssertJ fluent assertions, 80%+ coverage
+- Checkstyle: 4-space indent, line \<=120 chars, Javadoc on public APIs
+- PMD: UnusedVariable, EmptyCatchBlock, AvoidDuplicateLiterals enabled
+- FFM patterns: Arena for memory management, try-with-resources, bounds validation
+- Naming: PascalCase (classes), camelCase (methods/fields), UPPER_SNAKE_CASE (constants)
+- Best practices: final on classes/methods, immutable records, Optional<T> not null

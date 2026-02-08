@@ -45,3 +45,45 @@ ______________________________________________________________________
 - Language tasks: `task rust:build`, `task python:test`, `task node:lint`
 - Workflow tasks: `task build:all`, `task test:all`, `task lint:check`
 - Tool tasks: `task version:sync`, `task pdfium:install`, `task setup`, `task clean`
+
+## Taskfile Best Practices & Guidelines
+
+**Modular Design Principles**:
+
+- Each language gets its own task file in `.task/languages/`
+- Workflows orchestrated in `.task/workflows/`
+- Configuration in `.task/config/` (vars.yml, platforms.yml)
+- Tool tasks in `.task/tools/`
+- Main Taskfile.yml is minimal - just includes and top-level entry points
+
+**Creating New Task Files**:
+
+1. Create `.task/languages/{language}.yml` for language-specific tasks
+1. Include in main Taskfile.yml
+1. Use namespace pattern: `task {language}:build`, `task {language}:test`
+1. Support BUILD_PROFILE for dev/release/ci variants
+
+**Variable Management**:
+
+- Global variables in `.task/config/vars.yml` (BUILD_PROFILE, VERSION, paths, OS/ARCH)
+- Platform-specific in `.task/config/platforms.yml` (EXE_EXT, LIB_EXT, NUM_CPUS)
+- Avoid hardcoding paths; use {{.ROOT}}, {{.CRATES_DIR}}, {{.PACKAGES_DIR}}, {{.TARGET_DIR}}
+
+**Task Naming Convention**:
+
+- Language tasks: `task {language}:{action}` (e.g., rust:build, python:test)
+- Workflow tasks: `task {workflow}:{scope}` (e.g., build:all, test:all:fast)
+- Tool tasks: `task {tool}:{action}` (e.g., version:sync, pdfium:install)
+- Variants: `:dev`, `:release`, `:ci`, `:fast`, `:check`
+
+**Cross-Platform**: Test on Windows, Linux, macOS. Use ENV variables for library paths.
+
+**Error Handling**: Use `ignore_error: true` sparingly; prefer explicit error handling.
+
+**Caching & Performance**: Leverage {{.NUM_CPUS}} for parallel builds. Use `:fast` variants for quick validation.
+
+## Build Automation Standards
+
+- Lock files committed: uv.lock, pnpm-lock.yaml, go.sum, Cargo.lock, composer.lock
+- Dependency minimization: justify all external deps, audit regularly
+- Version sync across runtimes: Cargo.toml, package.json, pyproject.toml

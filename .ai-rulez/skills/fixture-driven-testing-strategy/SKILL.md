@@ -458,3 +458,32 @@ Run in CI:
 - **Test duplication**: Write fixture consumer once per language, parameterize tests
 - **Snapshot conflicts in PR**: Use deterministic snapshot naming
 - **No fixture documentation**: Include `description` field explaining intent
+
+## Testing Philosophy & Coverage Standards
+
+**Three-tier testing**: unit (80-95%), integration (real DB/services), E2E (smoke/full)
+
+**Real infrastructure in tests**: PostgreSQL, Redis, not mocks
+
+**Language-Specific Standards**:
+
+- **Rust**: cargo test, #[tokio::test], 95% coverage (tarpaulin), test error paths, edge cases, no panics
+- **Python**: Function-based tests only (\*_test.py), pytest fixtures, 95% coverage. Structure: tests/{core,features,integration,interfaces,extractors,ocr,utils,e2e}. Test async+sync, error paths. Naming: test_<function>_<scenario>_<outcome>. NEVER mock anyio/asyncio, prefer real objects (tmp_path).
+- **TypeScript**: .spec.ts next to source files, vitest, 80%+ coverage
+- **Go**: \*\_test.go with \_test package suffix (black-box), table-driven with t.Run(), 80%+ business logic, go test -race
+- **Ruby**: RSpec, describe/context/it blocks, 80%+ coverage
+- **Java**: JUnit 5, @Test methods, AssertJ, 80%+ coverage. E2E auto-generated from fixtures.
+
+## Test Apps - Published Package Validation
+
+**Purpose**: tests/test_apps validates PUBLISHED/RELEASED packages from npm, PyPI, RubyGems, Maven Central, Docker Hub, and Homebrew. NOT for local development testing.
+
+**Location**: tests/test_apps/{python,node,wasm,ruby,go,java,csharp,rust,docker,homebrew,browser-vite-svelte}
+
+**Version sync**: Included in `task sync-versions` - automatically updates all test app manifests to match Cargo.toml version.
+
+**Linting**: Pre-commit hooks apply to test_apps. CPD checks excluded (intentional duplication).
+
+**Usage**: Each test app installs the published package and runs comprehensive tests.
+
+**Critical**: Test apps are for validating releases, not development. Use e2e/ tests for development validation.
