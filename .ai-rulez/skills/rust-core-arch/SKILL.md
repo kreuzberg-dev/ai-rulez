@@ -87,3 +87,13 @@ ______________________________________________________________________
 **Anti-patterns**: Exposing implementation details, deeply nested modules in public API, mixed public/private in single module, not documenting API stability.
 
 **Stability Markers**: Document API stability with `#[deprecated]` and doc comments.
+
+## Core Principles
+
+**Do only what's asked. Never create files unnecessarily. Prefer editing. No proactive docs/READMEs.**
+
+**Python**: Builtin imports at top, dataclasses frozen/hashable/slots, function-based tests only.
+
+**Rust**: Never .unwrap() in production, SAFETY comments for unsafe, handle lock poisoning.
+
+**Architecture**: ALL extraction logic lives in Rust core. Bindings provide language-idiomatic APIs only.

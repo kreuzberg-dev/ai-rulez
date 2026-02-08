@@ -28,3 +28,9 @@ ______________________________________________________________________
 **Agent coordination**: Rust-first principle - core logic goes in rust-core-engineer first, then binding engineers expose through language-idiomatic APIs. Binding engineers should coordinate with rust-core-engineer for shared logic.
 
 **When NOT to use agents**: Simple edits, single-file changes, or tasks you can complete directly without specialized domain knowledge.
+
+## Model Routing
+
+**Sonnet 4.5**: Rust core architecture, complex algorithm optimization, safety-critical changes, cross-cutting refactoring, error handling strategy.
+
+**Haiku 4.5**: Binding engineering (Python/TS/Ruby/PHP), test writing, CLI development, CI/CD integration, dependency updates.
