@@ -11,6 +11,13 @@ profiles:
   organizational-only:
     - organizational
 default: full-polyglot
+builtins:
+  - code-quality
+  - git-workflow
+  - security
+  - testing
+  - token-efficiency
+  - default-commands
 compression:
   level: moderate
 gitignore: true
