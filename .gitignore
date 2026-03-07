@@ -1,1 +1,18 @@
 .claude/
+
+# AI Rules generated files
+CLAUDE.md
+.codex/skills/polyglot-api-documentation/SKILL.md
+.codex/skills/polyglot-bindings/SKILL.md
+.codex/
+.codex/skills/universal-anti-patterns/SKILL.md
+.codex/skills/ci-cd-multi-platform-matrix/SKILL.md
+.codex/skills/containerization-docker-standards/SKILL.md
+.codex/skills/git-commit-standards/SKILL.md
+.codex/skills/release-and-deployment-processes/SKILL.md
+.codex/skills/modular-taskfile-structure/SKILL.md
+.codex/skills/monitoring-observability-standards/SKILL.md
+.codex/skills/quick-start/SKILL.md
+.mcp.json
+.codex/skills/common-task-commands/SKILL.md
+AGENTS.md
