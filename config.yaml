@@ -1,16 +1,9 @@
 version: "3.0"
 name: ai-rulez
-description: Shared AI governance for kreuzberg.dev polyglot projects
+description: Shared AI governance modules for kreuzberg.dev polyglot projects
 presets:
   - claude
   - codex
-profiles:
-  full-polyglot:
-    - polyglot
-    - organizational
-  organizational-only:
-    - organizational
-default: full-polyglot
 builtins:
   - code-quality
   - git-workflow
