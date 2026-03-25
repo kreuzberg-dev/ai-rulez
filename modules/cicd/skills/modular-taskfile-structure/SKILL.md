@@ -1,6 +1,7 @@
-______________________________________________________________________
-
-## priority: critical
+---
+priority: critical
+description: Modular Taskfile organization with namespaced language and workflow tasks
+---
 
 # Modular Taskfile Structure
 

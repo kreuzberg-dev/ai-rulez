@@ -1,6 +1,7 @@
-______________________________________________________________________
-
-## priority: critical
+---
+priority: critical
+description: Full language parity for API documentation, guides, and code examples
+---
 
 # Polyglot API Documentation
 

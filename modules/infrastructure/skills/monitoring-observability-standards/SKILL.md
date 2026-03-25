@@ -1,6 +1,7 @@
-______________________________________________________________________
-
-## priority: medium
+---
+priority: medium
+description: Structured logging, metrics, and health check standards for observability
+---
 
 # Monitoring & Observability Standards
 

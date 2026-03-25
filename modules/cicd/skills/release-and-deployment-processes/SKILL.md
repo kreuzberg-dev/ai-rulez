@@ -1,6 +1,7 @@
-______________________________________________________________________
-
-## priority: critical
+---
+priority: critical
+description: Coordinated multi-platform release and deployment processes with semantic versioning
+---
 
 # Release & Deployment Processes
 

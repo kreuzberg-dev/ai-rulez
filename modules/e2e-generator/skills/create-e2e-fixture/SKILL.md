@@ -1,6 +1,7 @@
-______________________________________________________________________
-
-## name: create-e2e-fixture description: Create a new e2e test fixture for cross-language test generation
+---
+description: "Create a new e2e test fixture for cross-language test generation"
+priority: medium
+---
 
 # Create E2E Fixture
 

@@ -1,6 +1,7 @@
-______________________________________________________________________
-
-## priority: medium
+---
+priority: medium
+description: Multi-stage Docker builds, security, and container best practices
+---
 
 # Containerization & Docker Standards
 

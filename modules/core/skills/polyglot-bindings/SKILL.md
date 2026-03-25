@@ -1,6 +1,7 @@
-______________________________________________________________________
-
-## priority: critical
+---
+priority: critical
+description: Patterns for creating and maintaining language bindings around a Rust core
+---
 
 # Polyglot Bindings
 

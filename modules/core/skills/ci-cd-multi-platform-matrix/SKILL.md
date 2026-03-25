@@ -1,6 +1,7 @@
-______________________________________________________________________
-
-## priority: critical
+---
+priority: critical
+description: CI/CD matrix strategies for multi-platform and multi-language builds
+---
 
 # CI/CD Multi-Platform Matrix
 

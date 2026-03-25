@@ -1,6 +1,7 @@
-______________________________________________________________________
-
-## name: add-language-generator description: Add a new language generator to the e2e test generation system
+---
+description: "Add a new language generator to the e2e test generation system"
+priority: medium
+---
 
 # Add Language Generator
 

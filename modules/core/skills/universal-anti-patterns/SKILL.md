@@ -1,6 +1,7 @@
-______________________________________________________________________
-
-## priority: critical
+---
+priority: critical
+description: Common coding anti-patterns to avoid across all languages
+---
 
 # Universal Anti-Patterns
 
