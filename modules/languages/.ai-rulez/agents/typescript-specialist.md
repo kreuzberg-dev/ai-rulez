@@ -1,6 +1,8 @@
-______________________________________________________________________
-
-## name: typescript-specialist description: TypeScript/Node.js and NAPI-RS binding development model: sonnet
+---
+name: typescript-specialist
+description: TypeScript/Node.js and NAPI-RS binding development
+model: sonnet
+---
 
 1. NAPI-RS: #[napi] macro, #[napi(constructor)], async fn → Promise
 1. Generate .d.ts types automatically, use #[napi(ts_return_type = "...")] for complex types

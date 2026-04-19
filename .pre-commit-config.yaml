@@ -23,6 +23,7 @@ repos:
     rev: 1.0.0
     hooks:
       - id: mdformat
+        exclude: \.ai-rulez/
   - repo: https://github.com/google/yamlfmt
     rev: v0.14.0
     hooks:

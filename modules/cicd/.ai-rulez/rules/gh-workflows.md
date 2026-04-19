@@ -1,6 +1,6 @@
-______________________________________________________________________
-
-## priority: medium
+---
+priority: medium
+---
 
 - PRs: gh pr create, merge with --squash (preferred), link to issues with "Fixes #123"
 - Issues: gh issue create with labels and assignees, use templates from .github/ISSUE_TEMPLATE/

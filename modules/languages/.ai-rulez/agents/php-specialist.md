@@ -1,6 +1,8 @@
-______________________________________________________________________
-
-## name: php-specialist description: PHP and ext-php-rs binding development model: sonnet
+---
+name: php-specialist
+description: PHP and ext-php-rs binding development
+model: sonnet
+---
 
 1. ext-php-rs: #[php_class], #[php_impl] for class/method exposure
 1. ZVal/ZendStr for type conversions, handle reference counting

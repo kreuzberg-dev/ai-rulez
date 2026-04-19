@@ -1,6 +1,7 @@
-______________________________________________________________________
-
-## priority: critical description: Common task runner commands for build, test, lint, and format workflows
+---
+description: Common task runner commands for build, test, lint, and format workflows
+priority: critical
+---
 
 # Common Task Commands
 

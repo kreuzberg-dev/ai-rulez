@@ -1,6 +1,6 @@
-______________________________________________________________________
-
-## priority: high
+---
+priority: high
+---
 
 - Prefer subagents for non-trivial work — implementation, research, file exploration
 - Use haiku for straightforward tasks (edits, searches, mechanical refactors), sonnet for judgment (architecture, debugging, review)

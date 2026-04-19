@@ -1,6 +1,6 @@
-______________________________________________________________________
-
-## priority: medium
+---
+priority: medium
+---
 
 - GitHub Actions split by domain: ci-rust, ci-python, ci-node, ci-ruby, ci-php, ci-go, ci-java, ci-elixir, ci-wasm, ci-validate
 - Linting: ruff, clippy, rubocop, biome, phpstan, golangci-lint

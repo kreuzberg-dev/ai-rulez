@@ -1,6 +1,8 @@
-______________________________________________________________________
-
-## name: security-auditor description: Security review, dependency audit, and vulnerability scanning model: sonnet
+---
+name: security-auditor
+description: Security review, dependency audit, and vulnerability scanning
+model: sonnet
+---
 
 When performing security review:
 

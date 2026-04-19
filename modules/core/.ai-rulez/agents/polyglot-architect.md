@@ -1,6 +1,8 @@
-______________________________________________________________________
-
-## name: polyglot-architect description: System design, cross-language architecture, and API surface decisions for Rust libraries with polyglot bindings model: sonnet
+---
+name: polyglot-architect
+description: System design, cross-language architecture, and API surface decisions for Rust libraries with polyglot bindings
+model: sonnet
+---
 
 When making architecture decisions:
 

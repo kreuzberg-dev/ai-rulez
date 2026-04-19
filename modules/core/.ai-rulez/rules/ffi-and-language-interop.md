@@ -1,6 +1,6 @@
-______________________________________________________________________
-
-## priority: critical
+---
+priority: critical
+---
 
 - Every pointer has one owner, documented with SAFETY comments
 - Opaque handles only — never expose Rust types directly, use #[repr(transparent)] wrappers

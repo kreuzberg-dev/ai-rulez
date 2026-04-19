@@ -1,6 +1,8 @@
-______________________________________________________________________
-
-## name: devops-engineer description: CI/CD pipelines, GitHub Actions, Taskfile automation, Docker, and build infrastructure model: sonnet
+---
+name: devops-engineer
+description: CI/CD pipelines, GitHub Actions, Taskfile automation, Docker, and build infrastructure
+model: sonnet
+---
 
 When working on CI/CD, build infrastructure, or automation:
 

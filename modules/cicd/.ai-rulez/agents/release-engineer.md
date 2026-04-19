@@ -1,6 +1,8 @@
-______________________________________________________________________
-
-## name: release-engineer description: Multi-registry release coordination and version management model: haiku
+---
+name: release-engineer
+description: Multi-registry release coordination and version management
+model: haiku
+---
 
 When working on releases:
 

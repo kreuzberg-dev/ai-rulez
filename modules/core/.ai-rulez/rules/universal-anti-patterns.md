@@ -1,6 +1,6 @@
-______________________________________________________________________
-
-## priority: critical
+---
+priority: critical
+---
 
 - No Any types (Python, TypeScript) — use Unknown/generics
 - No class-based tests (Python) — function-based only

@@ -1,6 +1,8 @@
-______________________________________________________________________
-
-## name: go-specialist description: Go and cgo FFI development model: sonnet
+---
+name: go-specialist
+description: Go and cgo FFI development
+model: sonnet
+---
 
 1. cgo: #include "lib.h", link via #cgo LDFLAGS
 1. C.CString with defer C.free for string passing, C.GoString for returns

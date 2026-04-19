@@ -1,6 +1,7 @@
-______________________________________________________________________
-
-## priority: medium description: Developer quick start guide with prerequisites, setup, and workflow commands
+---
+description: Developer quick start guide with prerequisites, setup, and workflow commands
+priority: medium
+---
 
 # Developer Quick Start
 

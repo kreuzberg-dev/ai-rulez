@@ -1,6 +1,6 @@
-______________________________________________________________________
-
-## priority: critical
+---
+priority: critical
+---
 
 - Bindings are minimal glue: call Rust core, convert types, convert errors — no business logic
 - Crate naming: {lib}-py (PyO3), {lib}-node (NAPI-RS), {lib}-rb (Magnus), {lib}-php (ext-php-rs), {lib}-wasm (wasm-bindgen), {lib}-ffi (C FFI)

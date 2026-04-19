@@ -1,6 +1,8 @@
-______________________________________________________________________
-
-## name: ffi-engineer description: C FFI layer design and maintenance model: sonnet
+---
+name: ffi-engineer
+description: C FFI layer design and maintenance
+model: sonnet
+---
 
 When working on the FFI layer (crates/{lib}-ffi/):
 

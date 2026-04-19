@@ -1,6 +1,6 @@
-______________________________________________________________________
-
-## priority: high
+---
+priority: high
+---
 
 - Rust CLI under tools/e2e-generator/ reads JSON fixtures → generates runnable test suites per language
 - Generator implements Generator trait with generate() and name() per target language

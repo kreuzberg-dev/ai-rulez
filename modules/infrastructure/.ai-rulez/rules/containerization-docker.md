@@ -1,6 +1,6 @@
-______________________________________________________________________
-
-## priority: medium
+---
+priority: medium
+---
 
 - Multi-stage builds: full toolchain builder → minimal runtime (Alpine/Distroless/Scratch)
 - Layer caching: copy Cargo.toml/Cargo.lock first, then source; use BuildKit mount caches

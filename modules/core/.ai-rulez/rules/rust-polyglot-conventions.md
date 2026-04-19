@@ -1,6 +1,6 @@
-______________________________________________________________________
-
-## priority: high
+---
+priority: high
+---
 
 - Rust 2024 edition, clippy -D warnings, cargo fmt
 - Result\<T, E> with thiserror — never .unwrap() or panic in library code

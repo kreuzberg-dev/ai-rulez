@@ -1,6 +1,6 @@
-______________________________________________________________________
-
-## priority: medium
+---
+priority: medium
+---
 
 - Logging: tracing crate (Rust) / structlog (Python), JSON output, key=value — never f-strings
 - Spans: #[instrument] macro, context fields (user_id, request_id)

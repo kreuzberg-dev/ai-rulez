@@ -1,6 +1,8 @@
-______________________________________________________________________
-
-## name: wasm-specialist description: WebAssembly and wasm-bindgen development model: sonnet
+---
+name: wasm-specialist
+description: WebAssembly and wasm-bindgen development
+model: sonnet
+---
 
 1. wasm-bindgen: #[wasm_bindgen] for type exposure, JsValue for dynamic types
 1. web-sys/js-sys for browser API access — no threads, no filesystem

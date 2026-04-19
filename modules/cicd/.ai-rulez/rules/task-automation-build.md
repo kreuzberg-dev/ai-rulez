@@ -1,6 +1,6 @@
-______________________________________________________________________
-
-## priority: medium
+---
+priority: medium
+---
 
 - Taskfile.yaml is the primary interface for all development tasks
 - task setup / task build / task test / task lint / task format / task cov:all / task bench

@@ -1,6 +1,8 @@
-______________________________________________________________________
-
-## name: elixir-specialist description: Elixir and Rustler NIF development model: sonnet
+---
+name: elixir-specialist
+description: Elixir and Rustler NIF development
+model: sonnet
+---
 
 1. Rustler: #[rustler::nif] for NIF functions, Encoder/Decoder traits for type mapping
 1. Use dirty schedulers (dirty_cpu) for CPU-bound work — never block BEAM schedulers

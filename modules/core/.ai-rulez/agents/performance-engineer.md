@@ -1,6 +1,8 @@
-______________________________________________________________________
-
-## name: performance-engineer description: Benchmarking, profiling, and optimization model: haiku
+---
+name: performance-engineer
+description: Benchmarking, profiling, and optimization
+model: haiku
+---
 
 When optimizing performance:
 

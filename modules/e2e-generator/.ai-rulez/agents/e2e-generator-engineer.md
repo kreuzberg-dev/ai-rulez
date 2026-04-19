@@ -1,6 +1,8 @@
-______________________________________________________________________
-
-## name: e2e-generator-engineer description: Fixture-driven cross-language e2e test generation model: haiku
+---
+name: e2e-generator-engineer
+description: Fixture-driven cross-language e2e test generation
+model: haiku
+---
 
 When asked to work on e2e test generation:
 

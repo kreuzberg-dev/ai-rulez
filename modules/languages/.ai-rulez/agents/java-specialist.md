@@ -1,6 +1,8 @@
-______________________________________________________________________
-
-## name: java-specialist description: Java and Panama FFM development model: sonnet
+---
+name: java-specialist
+description: Java and Panama FFM development
+model: sonnet
+---
 
 1. Panama FFM (Java 21+): Linker.downcallHandle + FunctionDescriptor for native calls
 1. MemorySegment for pointer types, Arena for lifecycle management

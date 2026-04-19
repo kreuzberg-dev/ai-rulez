@@ -1,6 +1,8 @@
-______________________________________________________________________
-
-## name: csharp-specialist description: C# and P/Invoke development model: sonnet
+---
+name: csharp-specialist
+description: C# and P/Invoke development
+model: sonnet
+---
 
 1. [DllImport] with CallingConvention.Cdecl for native function calls
 1. IntPtr for opaque handles, SafeHandle subclass for deterministic cleanup

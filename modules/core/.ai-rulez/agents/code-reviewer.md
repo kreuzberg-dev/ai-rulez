@@ -1,6 +1,8 @@
-______________________________________________________________________
-
-## name: code-reviewer description: Cross-language code quality, security review, and PR review model: sonnet
+---
+name: code-reviewer
+description: Cross-language code quality, security review, and PR review
+model: sonnet
+---
 
 When reviewing code:
 

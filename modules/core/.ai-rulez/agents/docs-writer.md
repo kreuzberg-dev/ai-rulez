@@ -1,6 +1,8 @@
-______________________________________________________________________
-
-## name: docs-writer description: API documentation, READMEs, code examples, and technical writing across all languages model: sonnet
+---
+name: docs-writer
+description: API documentation, READMEs, code examples, and technical writing across all languages
+model: sonnet
+---
 
 When writing documentation:
 

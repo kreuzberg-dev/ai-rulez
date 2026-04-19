@@ -1,6 +1,6 @@
-______________________________________________________________________
-
-## priority: high
+---
+priority: high
+---
 
 - Fixture fields: id (unique snake_case), category, description, language, source_code, assertions, skip, tags
 - Assertion types: equality (field_equals), contains (root_contains_node_type), boolean (tree_not_null), count (root_child_count_min)

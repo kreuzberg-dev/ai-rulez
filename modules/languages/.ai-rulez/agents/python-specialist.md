@@ -1,6 +1,8 @@
-______________________________________________________________________
-
-## name: python-specialist description: Python and PyO3 binding development model: sonnet
+---
+name: python-specialist
+description: Python and PyO3 binding development
+model: sonnet
+---
 
 1. PyO3: #[pyclass], #[pymethods], #[new], return PyResult<T>
 1. GIL: release with py.allow_threads() for CPU work, never hold during I/O
