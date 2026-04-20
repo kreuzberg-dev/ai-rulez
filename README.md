@@ -4,52 +4,33 @@ Shared AI governance modules for kreuzberg.dev polyglot projects. Each module is
 
 ## Available Modules
 
-### `modules/core` (~17K)
+### `modules/core` — All repos need this
 
-Polyglot Rust + multi-language binding conventions. **All repos need this.**
+- **Agents** (7): code-reviewer, polyglot-architect, rust-core-engineer, ffi-engineer, docs-writer, security-auditor, performance-engineer
+- **Rules** (6): Rust conventions, bindings, FFI interop, anti-patterns, workflow, no-ai-signatures
+- **Contexts** (4): prek, polyrepo-structure, pre-commit-tooling, taskfile-structure
+- **Skills** (2): common-task-commands, quick-start
 
-- Rules: binding crate architecture, FFI interop, polyglot error handling, Rust conventions
-- Agents: code-reviewer, ffi-maintenance-engineer, polyglot-architect
-- Skills: common-task-commands, quick-start, universal-anti-patterns, polyglot-bindings, polyglot-api-documentation, ci-cd-multi-platform-matrix
-- Context: polyglot architecture overview
+### `modules/languages` — Repos with language bindings
 
-### `modules/cicd` (~8K)
+- **Agents** (9): python, typescript, ruby, go, java, csharp, php, elixir, wasm specialists
 
-CI/CD pipelines, task automation, and release processes. **Most repos need this.**
+### `modules/cicd` — Most repos need this
 
-- Rules: CI/CD pipeline standards, GitHub workflows, task automation
-- Agents: release-versioning-coordinator
-- Skills: modular-taskfile-structure, release-and-deployment-processes
-- Context: RTK overview, tooling overview
+- **Agents** (2): release-engineer, devops-engineer
+- **Rules** (3): CI/CD pipelines, GitHub workflows, task automation
 
-### `modules/e2e-generator` (~12K)
+### `modules/e2e-generator` — Repos with `tools/e2e-generator/`
 
-Fixture-driven cross-language test generation. **Repos with `tools/e2e-generator/`.**
+- **Agents** (1): e2e-generator-engineer
+- **Rules** (3): conventions, fixture schema, generated code policy
+- **Skills** (2): create-e2e-fixture, add-language-generator
 
-- Rules: e2e generator conventions, fixture schema design, generated code policy
-- Agents: e2e-generator-engineer
-- Skills: create-e2e-fixture, add-language-generator
-- Context: e2e generator architecture
+### `modules/infrastructure` — Deployed services only
 
-### `modules/infrastructure` (~7K)
-
-Container, cloud, and monitoring standards. **Only repos with deployed services.**
-
-- Rules: containerization/Docker, GCloud conventions, monitoring/observability
-- Agents: devops-infrastructure-engineer
-- Skills: containerization-docker-standards, monitoring-observability-standards
-
-### `modules/tooling` (~4K)
-
-Optional tooling-specific rules (GWS, Playwright MCP, RTK usage).
-
-### `modules/architecture` (~88K)
-
-Architecture reference docs, design documents, and ADRs. **Large — include only when needed.**
+- **Rules** (3): Docker, GCloud, monitoring
 
 ## Usage
-
-Include specific modules in your project's `config.yaml`:
 
 ```yaml
 includes:
@@ -57,22 +38,28 @@ includes:
     source: https://github.com/kreuzberg-dev/ai-rulez.git
     path: modules/core
     merge_strategy: local-override
+  - name: kreuzberg-languages
+    source: https://github.com/kreuzberg-dev/ai-rulez.git
+    path: modules/languages
+    merge_strategy: local-override
   - name: kreuzberg-cicd
     source: https://github.com/kreuzberg-dev/ai-rulez.git
     path: modules/cicd
     merge_strategy: local-override
 ```
 
-Each module is a self-contained ai-rulez structure with `rules/`, `context/`, `skills/`, and `agents/` subdirectories.
-
 ## Consumer Configurations
 
 | Repo | Modules |
 |------|---------|
-| kreuzberg | core, cicd, infrastructure, e2e-generator |
-| spikard | core, cicd, e2e-generator |
-| tree-sitter-language-pack | core, cicd, e2e-generator |
-| html-to-markdown | core, cicd |
+| kreuzberg | core, languages, cicd, infrastructure, e2e-generator |
+| html-to-markdown | core, languages, cicd, infrastructure, e2e-generator |
+| liter-llm | core, languages, cicd, e2e-generator |
+| kreuzcrawl | core, languages, cicd, e2e-generator |
+| tree-sitter-language-pack | core, languages, cicd, e2e-generator |
+| kreuzberg-cloud | cicd, infrastructure |
+| infra | cicd, infrastructure |
+| actions | cicd |
 
 ## License
 
