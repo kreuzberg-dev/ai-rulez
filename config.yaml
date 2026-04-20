@@ -4,6 +4,7 @@ description: Shared AI governance modules for kreuzberg.dev polyglot projects
 presets:
   - claude
   - codex
+  - copilot
 builtins:
   - code-quality
   - git-workflow
