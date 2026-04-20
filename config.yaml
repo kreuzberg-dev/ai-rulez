@@ -5,6 +5,8 @@ presets:
   - claude
   - codex
   - copilot
+  - cursor
+  - antigravity
 builtins:
   - code-quality
   - git-workflow
@@ -12,6 +14,4 @@ builtins:
   - testing
   - token-efficiency
   - default-commands
-compression:
-  level: moderate
 gitignore: true
