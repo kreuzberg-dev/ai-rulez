@@ -1,6 +1,6 @@
 name: Bug Report
 description: Report a bug or unexpected behavior
-title: "fix: "
+title: "bug: "
 labels: ["bug"]
 projects: ["kreuzberg-dev/1"]
 body:
@@ -23,6 +23,5 @@ body:
     attributes:
       label: Relevant files and configuration
       description: >-
-        Any configuration files, input files, or code snippets needed to
-        reproduce the issue.
+        Any configuration files, input files, or code snippets needed to reproduce the issue.
       render: text
