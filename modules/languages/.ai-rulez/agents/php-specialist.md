@@ -1,7 +1,8 @@
 ---
 name: php-specialist
 description: PHP and ext-php-rs binding development
-model: sonnet
+model: haiku
+effort: medium
 ---
 
 1. ext-php-rs: #[php_class], #[php_impl] for class/method exposure

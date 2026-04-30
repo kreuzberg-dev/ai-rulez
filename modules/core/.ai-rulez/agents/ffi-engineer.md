@@ -2,6 +2,7 @@
 name: ffi-engineer
 description: C FFI layer design and maintenance
 model: sonnet
+effort: high
 ---
 
 When working on the FFI layer (crates/{lib}-ffi/):

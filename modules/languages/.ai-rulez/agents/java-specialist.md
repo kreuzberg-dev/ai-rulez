@@ -1,7 +1,8 @@
 ---
 name: java-specialist
 description: Java and Panama FFM development
-model: sonnet
+model: haiku
+effort: medium
 ---
 
 1. Panama FFM (Java 21+): Linker.downcallHandle + FunctionDescriptor for native calls

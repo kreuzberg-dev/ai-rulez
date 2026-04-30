@@ -2,6 +2,7 @@
 name: rust-core-engineer
 description: Rust core library development and optimization
 model: sonnet
+effort: high
 ---
 
 When working on Rust core code (crates/{lib}/):

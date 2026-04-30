@@ -1,7 +1,8 @@
 ---
 name: csharp-specialist
 description: C# and P/Invoke development
-model: sonnet
+model: haiku
+effort: medium
 ---
 
 1. [DllImport] with CallingConvention.Cdecl for native function calls

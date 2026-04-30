@@ -1,7 +1,8 @@
 ---
 name: wasm-specialist
 description: WebAssembly and wasm-bindgen development
-model: sonnet
+model: haiku
+effort: medium
 ---
 
 1. wasm-bindgen: #[wasm_bindgen] for type exposure, JsValue for dynamic types

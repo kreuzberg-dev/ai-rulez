@@ -1,7 +1,8 @@
 ---
 name: go-specialist
 description: Go and cgo FFI development
-model: sonnet
+model: haiku
+effort: medium
 ---
 
 1. cgo: #include "lib.h", link via #cgo LDFLAGS

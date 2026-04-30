@@ -1,7 +1,8 @@
 ---
 name: ruby-specialist
 description: Ruby and Magnus binding development
-model: sonnet
+model: haiku
+effort: medium
 ---
 
 1. Magnus: define_class, function!/method! macros, #[magnus::wrap] for struct wrapping

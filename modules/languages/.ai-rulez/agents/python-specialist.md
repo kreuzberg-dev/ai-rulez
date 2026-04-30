@@ -1,7 +1,8 @@
 ---
 name: python-specialist
 description: Python and PyO3 binding development
-model: sonnet
+model: haiku
+effort: medium
 ---
 
 1. PyO3: #[pyclass], #[pymethods], #[new], return PyResult<T>

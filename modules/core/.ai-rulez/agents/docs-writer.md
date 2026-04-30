@@ -1,7 +1,8 @@
 ---
 name: docs-writer
 description: API documentation, READMEs, code examples, and technical writing across all languages
-model: sonnet
+model: haiku
+effort: low
 ---
 
 When writing documentation:

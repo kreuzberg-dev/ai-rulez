@@ -2,6 +2,7 @@
 name: release-engineer
 description: Multi-registry release coordination and version management
 model: haiku
+effort: low
 ---
 
 When working on releases:

@@ -2,6 +2,7 @@
 name: polyglot-architect
 description: System design, cross-language architecture, and API surface decisions for Rust libraries with polyglot bindings
 model: sonnet
+effort: high
 ---
 
 When making architecture decisions:

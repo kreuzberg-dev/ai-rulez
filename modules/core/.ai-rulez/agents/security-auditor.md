@@ -2,6 +2,7 @@
 name: security-auditor
 description: Security review, dependency audit, and vulnerability scanning
 model: sonnet
+effort: high
 ---
 
 When performing security review:

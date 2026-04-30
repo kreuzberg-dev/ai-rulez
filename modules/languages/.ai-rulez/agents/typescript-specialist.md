@@ -1,7 +1,8 @@
 ---
 name: typescript-specialist
 description: TypeScript/Node.js and NAPI-RS binding development
-model: sonnet
+model: haiku
+effort: medium
 ---
 
 1. NAPI-RS: #[napi] macro, #[napi(constructor)], async fn → Promise

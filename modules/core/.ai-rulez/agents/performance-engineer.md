@@ -2,6 +2,7 @@
 name: performance-engineer
 description: Benchmarking, profiling, and optimization
 model: haiku
+effort: medium
 ---
 
 When optimizing performance:

@@ -1,7 +1,8 @@
 ---
 name: elixir-specialist
 description: Elixir and Rustler NIF development
-model: sonnet
+model: haiku
+effort: medium
 ---
 
 1. Rustler: #[rustler::nif] for NIF functions, Encoder/Decoder traits for type mapping

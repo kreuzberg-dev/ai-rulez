@@ -6,6 +6,22 @@ priority: medium
 
 Shared hooks run via `prek run --all-files`. Each repo's `.pre-commit-config.yaml` defines its hooks.
 
+Most language-scoped hooks below are sourced from the shared
+[`kreuzberg-dev/pre-commit-hooks`](https://github.com/kreuzberg-dev/pre-commit-hooks)
+repo (39 hooks; sha256-verified upstream binaries where applicable, toolchain wrappers elsewhere).
+Wire it into `.pre-commit-config.yaml` as:
+
+```yaml
+- repo: https://github.com/kreuzberg-dev/pre-commit-hooks
+  rev: v0.1.0
+  hooks:
+    - id: shfmt
+    - id: shellcheck
+    - id: hadolint
+    - id: mypy
+    # …pick the ids you need from the upstream README
+```
+
 | Scope | Tools |
 |-------|-------|
 | **General** | trailing-whitespace, end-of-file-fixer, check-merge-conflict, detect-private-key, typos |
