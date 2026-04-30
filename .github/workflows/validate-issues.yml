@@ -4,5 +4,5 @@ on:
     types: [opened, edited]
 jobs:
   validate:
-    uses: kreuzberg-dev/actions/.github/workflows/reusable-validate-issues.yml@main
+    uses: kreuzberg-dev/actions/.github/workflows/reusable-validate-issues.yml@v1
     secrets: inherit
