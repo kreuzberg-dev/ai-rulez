@@ -11,7 +11,7 @@ E2E test generation is handled by [Alef](https://github.com/xberg-io/alef). To a
 
 1. **Add language to `alef.toml`**: Configure the new language under `[e2e.languages.<lang>]` with appropriate test framework, file extensions, and assertion patterns.
 1. **Add call overrides**: If the language needs special call syntax, add `[e2e.call.<call_name>.languages.<lang>]` overrides.
-1. **Generate and test**: Run `task e2e:generate:all` then `task e2e:test:all` to verify the generated tests compile and pass.
+1. **Generate and test**: Run `task e2e:generate` then `task e2e:test` to verify the generated tests compile and pass.
 1. **Update CI matrix**: Add the new language to the e2e test CI workflow.
 
 ## Checklist

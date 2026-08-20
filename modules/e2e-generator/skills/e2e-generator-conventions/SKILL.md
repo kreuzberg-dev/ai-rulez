@@ -10,5 +10,5 @@ description: How Alef-based e2e generation works — the alef.toml [e2e] config,
 - Output: e2e/{language}/ directories, each a self-contained test project
 - Fixtures: JSON under fixtures/ by category (smoke, chat, streaming, error-handling, etc.)
 - Each fixture has unique snake_case id, loaded recursively, sorted by (category, id)
-- Run `task e2e:generate:all` to regenerate, `task e2e:test:all` to verify
+- Run `task e2e:generate` to regenerate, `task e2e:test` to verify
 - Never hand-edit generated files — modify fixtures or `alef.toml` instead

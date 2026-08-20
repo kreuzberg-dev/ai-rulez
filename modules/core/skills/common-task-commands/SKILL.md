@@ -8,12 +8,12 @@ description: Common Taskfile commands across xberg-io repos — setup, build, te
 | Category | Commands |
 |----------|----------|
 | **Setup** | `task setup` |
-| **Build** | `task build` (core-only), `task build:bindings`, `task build:all`, `task rust:build`, `task python:build`, `task node:build`, `task go:build`, `task java:build`, `task ruby:build`, `task csharp:build`, `task wasm:build` |
-| **Test** | `task test`, `task rust:test`, `task python:test`, `task node:test`, `task go:test`, `task java:test`, `task ruby:test`, `task e2e:test`, `task e2e:all` |
-| **Lint** | `task lint:all`, `task lint:check` (CI), `task rust:clippy`, `task python:lint`, `task node:lint` |
-| **Format** | `task format`, `task format:check`, `task rust:fmt`, `task python:format`, `task node:format` |
+| **Build** | `task build` (core-only), `task build:bindings`, `task build:all`, `task rust:build`, `task php:build` |
+| **Test** | `task test` (Rust core), `task test:bindings` (all bindings via alef), `task test:all`, `task rust:test`, `task swift:test`, `task dart:test`, `task zig:test`, `task e2e:test`, `task e2e:all` |
+| **Lint** | `task lint`, `task lint:check` (CI), `task rust:lint`, `task csharp:lint`, `task swift:lint`, `task zig:lint` |
+| **Format** | `task format`, `task format:check`, `task rust:format`, `task csharp:format`, `task swift:format`, `task dart:format`, `task zig:format` |
 | **Alef** | `task alef:generate`, `task alef:verify`, `task alef:build`, `task build:bindings`, `task build:all`, `task alef:sync`, `task alef:docs` |
-| **Utils** | `task clean`, `task version:sync`, `task smoke` |
+| **Utils** | `task clean`, `task versions:sync`, `task check`, `task test-apps:smoke` |
 
 Build commands respect `BUILD_PROFILE` (dev/release/ci). Append `:dev` or `:release` for explicit mode.
 

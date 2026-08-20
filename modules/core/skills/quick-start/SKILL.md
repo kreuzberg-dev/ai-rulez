@@ -34,19 +34,20 @@ task setup
 # Core tests
 task test
 
-# Specific languages
-task test:rust
-task test:python
-task test:ruby
-task test:node
-task test:ts
-task test:js
-task test:php
-task test:go
+# All binding languages (alef drives the per-language suites)
+task test:bindings
+
+# Everything: Rust core + bindings
+task test:all
+
+# The languages that expose their own test task
+task rust:test
+task swift:test
+task dart:test
+task zig:test
 
 # Coverage
 task cov:rust
-task cov:python
 task cov:all
 ```
 
@@ -75,8 +76,8 @@ task e2e:build
 task e2e:test
 task e2e:all
 
-# Run benchmarks
-task bench
+# Run benchmarks (name varies by repo — check task --list; e.g. benchmark:run, bench:run, rust:bench)
+task benchmark:run
 
 # Update dependencies
 task update

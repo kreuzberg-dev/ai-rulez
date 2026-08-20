@@ -26,8 +26,8 @@ description: How to author a new e2e test fixture for cross-language test genera
    ```
 
 1. **Add to fixtures directory**: Place in appropriate category file or subdirectory.
-1. **Regenerate**: Run `task generate:e2e`.
-1. **Verify**: Run `task test:e2e` to confirm all languages pass.
+1. **Regenerate**: Run `task e2e:generate`.
+1. **Verify**: Run `task e2e:test` to confirm all languages pass.
 1. **Commit**: Include fixture + regenerated test files in same commit.
 
 ## Guidelines
