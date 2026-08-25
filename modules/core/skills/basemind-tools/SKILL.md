@@ -13,3 +13,7 @@ When basemind is available (its MCP tools or the `basemind` CLI), prefer it over
 - Use `search_documents` and the document pipeline for RAG, extraction, and NER over PDFs/docs; use `web_scrape` / `web_crawl` / `web_map` for web content.
 - After making edits, run `rescan` to refresh the index instead of reconnecting. Do not re-read a file basemind already mapped.
 - When collaborating with other agents in the repo, use the comms tools (`room_list`, `room_join`, `room_post`, `room_history`, `inbox_read`, `message_get`) to coordinate.
+- Any CLI flag carrying prose with code identifiers — a `--body`, a commit message, a comment
+  posted through a tool — comes from a file or a quoted heredoc, not an inline double-quoted
+  string: `` ` ``, `$(...)`, `${...}`, and `!` are all substituted by the shell inside double
+  quotes, silently deleting or mangling every backticked identifier in the text.

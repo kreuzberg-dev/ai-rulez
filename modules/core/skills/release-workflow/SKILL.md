@@ -49,19 +49,31 @@ lint or test failure at its source — do not release past a failure.
 
 ## 4. Commit, tag, and publish the GitHub release
 
+Push `main` before creating the tag, not after — tagging first and pushing
+second risks the tag pointing at a commit `origin/main` never contains if the
+push is rejected or rebased in between, and `--force-with-lease` does not work
+on tags.
+
 ```bash
 git add -A
 git commit -m "chore(release): X.Y.Z"
-git tag -a vX.Y.Z -m "vX.Y.Z"
 git push origin main
+git tag -a vX.Y.Z -m "vX.Y.Z"
 git push origin vX.Y.Z
 gh release create vX.Y.Z --title "vX.Y.Z" --generate-notes
 ```
 
 Add `--prerelease` for RC/beta tags. Prefer `--notes-file` built from the new
 CHANGELOG section when the entry is rich. A bare `git tag` is not a release —
-always run `gh release create`. The tag push triggers the repo's publish
-workflow (`cargo publish` and multi-registry binding publishes).
+always run `gh release create`.
+
+**Do not assume what triggers your repo's publish workflow — check it.** These
+repos are not uniform: some publish on the GitHub release (`on: release:
+types: [published]`), some require an explicit `workflow_dispatch` with no
+automatic trigger at all, and at least one fires on a tag push
+(`on: push: tags:`). Read your own `.github/workflows/publish*.yaml` `on:`
+block before relying on any one of these — assuming the wrong mechanism is how
+a tagged, pushed release silently never reaches its registry.
 
 ## 5. Install the released build locally
 
